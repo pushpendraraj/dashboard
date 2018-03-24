@@ -8,20 +8,22 @@ const appRoutes: Routes = [
     {
         path:'',
         component:HomeComponent,
-        data:{'sectionClass':'intro'}
+        data:{'sectionClass':'intro', 'title':'Home'}
     },
     {
         path:'restaurant',
         component:RestaurantComponent,
-        data:{'sectionClass':'intro_bg'}
+        data:{'sectionClass':'intro_bg', 'title':'Restaurant'}
     },
     {
         path:'about',
-        component:AboutComponent
+        component:AboutComponent,
+        data:{'sectionClass':'intro_bg', 'title':'About Us'}
     },
     {
         path:'**',
-        component:PageNotFoundComponent
+        component:PageNotFoundComponent,
+        data:{'sectionClass':'intro_bg', 'title':'Page Not Found'}
     }
 ];
 
