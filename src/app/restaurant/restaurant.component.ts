@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./restaurant.component.css']
 })
 export class RestaurantComponent implements OnInit {
-
-  constructor() { }
+  restaurants = [];
+  constructor(private dataService : DataService) { }
 
   ngOnInit() {
+    this.dataService.getRestaurants().subscribe({
+      next(response) { console.log(response); },
+      error(err) { console.error('Error: ' + err); },
+      complete() { console.log('Completed'); }
+     });
+    console.log(this.restaurants);
   }
+
+
 
 }
