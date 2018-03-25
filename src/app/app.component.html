@@ -6,45 +6,54 @@
         <div class="gn-scroller">
           <ul class="gn-menu">
             <li>
-              <a routerLink="restaurant" routerLinkActive="active" class="gn-icon gn-icon-download">Restaurants</a>
+              <a routerLink="restaurant" routerLinkActive="active"><i class="fa fa-cutlery"></i> Restaurants</a>
             </li>
             <li>
-              <a href="#about" class="gn-icon gn-icon-download">About</a>
-            </li>
-            <li><a href="#service" class="gn-icon gn-icon-cog">Service</a></li>
-            <li><a href="#works" class="gn-icon gn-icon-help">Works</a></li>
-            <li>
-              <a href="#contact" class="gn-icon gn-icon-archive">Contact</a>
-            </li>
+                <a href="#about"><i class="fa fa-bookmark"></i> About Us</a>
+              </li>
+              <li>
+                <a href="#contact"><i class="fa fa-comments"></i> Blog</a>
+              </li>
+              <li>
+                <a href="#contact"><i class="fa fa-envelope"></i> Feedback</a>
+              </li>
+              <li>
+                <a href="#contact"><i class="fa fa-phone"></i> Contact Us</a>
+              </li>
+              <li><a href="#service"><i class="fa fa-cog"></i> Terms & Conditions</a></li>
+              <li><a href="#works"><i class="fa fa-briefcase"></i> Privacy & Policy</a></li>
+  
           </ul>
         </div><!-- /gn-scroller -->
       </nav>
     </li>
     <li><a routerLink="/" ><img src="assets/img/logo2.png" /></a></li>
-    <li><ul class="company-social">
-          <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-          <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-          <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-          <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-        </ul>	</li>
+    <li>
+        <ul class="wow bounceInDown animated">
+          <li><a href="#Login" id="signIn" target="_blank"><i class="fa fa-sign-in"></i>Login</a></li>     
+          <!-- <li><a href="logins/logout"><i class="fa fa-sign-out"></i>Logout</a></li>     -->
+        </ul>
+      </li>
   </ul>
 </div>
 <section id="{{sectionId}}" class="intro">
   <router-outlet></router-outlet>
 </section>
-<footer *ngIf="displayFooter">
-	<div class="footer-section">
-		<div class="container">
-			<div class="footer-left">
-				<ul>
-					<li><a href="">Home</a></li>
-					<li><a href="">About Us</a></li>
-					<li><a href="">Contact Us</a></li>
-				</ul>
-			</div>
-			<div class="footer-right">
-				Powered By : <a href="http:7einfotech.com" target="__blank">7einfotech.com</a>
-			</div>
-		</div>
-	</div>
+<footer id="footer" *ngIf="displayFooter">
+    <div class="footer-section">
+        <div class="container">
+          <div class="footer-left">
+            <ul class="company-social wow bounceInDown animated">
+          <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+          
+        </ul>
+          </div>
+          <div class="footer-right">
+            Powered By : <a href="http:7einfotech.com" target="__blank">7einfotech.com</a>
+          </div>
+        </div>
+      </div>
 </footer>

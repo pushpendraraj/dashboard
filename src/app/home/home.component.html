@@ -1,15 +1,19 @@
 <div class="slogan">
     <h1>You Drool, We Deliver</h1>
     <p>Order food online from nearest restaurant.</p>
-    <form action="/#/restaurant"class="form-inline">
-      <div class="form-group home-search">
-        <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-        <div class="input-group">
-          <div class="input-group-addon"><span class="gn-icon gn-icon-search"></span></div>
-          <div class="input-group-addon">Gwalior</div>
-          <input type="text" class="form-control" id="exampleInputAmount" placeholder="Search Location">	
-        </div>
-      </div>
-      <button type="submit" class="btn btn-skin">GO</button>
-    </form>
+    <form action="/restaurant" id="SearchPanel" class="form-inline" method="get" accept-charset="utf-8">			<div class="form-group home-search">
+				<div class="input-group">
+					<div class="input-group-addon"><span class="gn-icon gn-icon-search"></span></div>
+					<div class="input-group-addon">Gwalior</div>
+					<div class="input text"><input name="search" class="form-control" placeholder="Search by Location, Restaurant, cusine" type="text" id="SearchSearch"/></div>	
+				</div>
+			</div>
+			<button type="submit" id="SearchButton" class="btn btn-skin">GO</button>
+		</form>
   </div>
+  <ul class="company-social company-social-home wow bounceInDown animated">
+      <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+      <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+      <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+  </ul>

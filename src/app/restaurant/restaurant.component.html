@@ -1,77 +1,91 @@
 <div class="container content-section">
-  {{restaurants}}
-    <div class="row">
-      <div class="col-md-3 wow bounceInLeft  animated">
-        <form class="form-horizontal">
-          <div class="form-group">
+  <div *ngFor="let restaurant of restaurants;" class="row">
+    <div class="col-md-3">
+      <form class="form-horizontal">
+        <div class="form-group">
           <div class="col-sm-10">
             <input type="text" class="form-control" placeholder="Search">
           </div>
-          </div>
-          <div class="form-group">
+        </div>
+        <div class="form-group">
           <div class="col-sm-10">
-            <select data-placeholder="Choose a Country" class="chosen-select" tabindex="2">
-            <option value="">Short By Option</option>
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="Afghanistan">Afghanistan</option>
-            <option value="Albania">Albania</option>
-            <option value="Algeria">Algeria</option>
-            <option value="American Samoa">American Samoa</option>
-            <option value="Andorra">Andorra</option>
-            <option value="Angola">Angola</option>
-            <option value="Anguilla">Anguilla</option>
-            <option value="Antarctica">Antarctica</option>
-            
+            <select data-placeholder="Choose a Country" class="chosen-select form-control" tabindex="2">
+              <option value="">Short By Option</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Afghanistan">Afghanistan</option>
+              <option value="Albania">Albania</option>
+              <option value="Algeria">Algeria</option>
+              <option value="American Samoa">American Samoa</option>
+              <option value="Andorra">Andorra</option>
+              <option value="Angola">Angola</option>
+              <option value="Anguilla">Anguilla</option>
+              <option value="Antarctica">Antarctica</option>
             </select>
           </div>
-          </div>
-          <div class="form-group">
+        </div>
+        <div class="form-group">
           <div class="col-sm-10">
-             <select data-placeholder="Choose a Country" class="chosen-select" tabindex="2">
-            <option value="">Select Cuisine</option>
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="Afghanistan">Afghanistan</option>
-            <option value="Albania">Albania</option>
-            <option value="Algeria">Algeria</option>
-            <option value="American Samoa">American Samoa</option>
-            <option value="Andorra">Andorra</option>
-            <option value="Angola">Angola</option>
-            <option value="Anguilla">Anguilla</option>
-            <option value="Antarctica">Antarctica</option>
-            
+            <select data-placeholder="Choose a Country" class="chosen-select form-control" tabindex="2">
+              <option value="">Select Cuisine</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Afghanistan">Afghanistan</option>
+              <option value="Albania">Albania</option>
+              <option value="Algeria">Algeria</option>
+              <option value="American Samoa">American Samoa</option>
+              <option value="Andorra">Andorra</option>
+              <option value="Angola">Angola</option>
+              <option value="Anguilla">Anguilla</option>
+              <option value="Antarctica">Antarctica</option>
             </select>
           </div>
-          </div>
-          <div class="form-group">
+        </div>
+        <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-skin">Search</button>
           </div>
-          </div>
-        </form>
-      </div>
-    <div class="col-md-9 restaurant-list-block padding-left-none wow bounceInRight animated">
+        </div>
+      </form>
+    </div>
+    <div class="col-md-9 pull-left restaurant-list-block padding-left-none wow bounceInRight animated">
       <div class="col-md-8 padding-left-none">
         <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
-          <div class="restaurant-logo"><img src="img/restaurant_logo.jpg" /></div>
-          <div class="restaurant-short-details"><strong><i class="fa fa-cutlery"></i> Chili pepper</strong>
+          <div class="restaurant-logo">
+            <img [src]="restaurant.restaurant_logo" />
+          </div>
+          <div class="restaurant-short-details">
+            <strong>
+              <i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</strong>
             <small>
-              <i class="fa fa-map-marker"></i> 
-              Chilli Pepper Multi Cuisine Restaurant Rohini, Delhi NCR, India address G 89-90, Near M2K Cinemas, Aggarwal City Plaza, Sector 3, Rohini, New Delhi 110085
+              <i class="fa fa-map-marker"></i>
+              {{restaurant.location}}
             </small>
           </div>
           <div class="clear"></div>
           <div class="restaurant-short-price">
-          <strong>Min Order : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery Fee : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery On Time : <small><i class="fa fa-rupee"></i> 100</small></strong>
+            <strong>Min Order :
+              <small>
+                <i class="fa fa-rupee"></i> {{restaurant.min_order}}</small>
+            </strong>
+            <strong>Delivery Fee :
+              <small>
+                <i class="fa fa-rupee"></i> {{restaurant.delivery_charge}}</small>
+            </strong>
+            <strong>Delivery On Time :
+              <small>
+                <i class="fa fa-rupee"></i> {{restaurant.delivery_on_time}}</small>
+            </strong>
           </div>
         </div>
         <div class="col-md-3 restaurant-rate">
-          <div><img height="75px" width="75px" src="assets/img/star.png"></div>
+          <div>
+            <img height="75px" width="75px" src="assets/img/star.png">
+          </div>
           <div>5 Rating</div>
-          <div><a href="#" class="btn btn-info">Order Now</a></div>
+          <div>
+            <a href="#" class="btn btn-info">Order Now</a>
+          </div>
         </div>
       </div>
       <div class="col-md-4">
@@ -82,170 +96,34 @@
         </div>
         <div class="restaurant-thumb-images">
           <ul>
-            <li><a href="#"><img src="assets/img/restaurant_logo.jpg"></a></li>
-            <li><a href="#"><img src="assets/img/restaurant_logo.jpg"></a></li>
-            <li><a href="#"><img src="assets/img/restaurant_logo.jpg"></a></li>
-            <li><a href="#"><img src="assets/img/restaurant_logo.jpg"></a></li>
-            <li><a href="#"><img src="assets/img/restaurant_logo.jpg"></a></li>
+            <li>
+              <a href="#">
+                <img src="assets/img/restaurant_logo.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="assets/img/restaurant_logo.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="assets/img/restaurant_logo.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="assets/img/restaurant_logo.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="assets/img/restaurant_logo.jpg">
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
-    
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        
-      </div>
-    <div class="col-md-9 restaurant-list-block padding-left-none wow bounceInLeft animated">
-      <div class="col-md-8 padding-left-none">
-        <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
-          <div class="restaurant-logo"><img src="assets/img/restaurant_logo.jpg" /></div>
-          <div class="restaurant-short-details"><strong><i class="fa fa-cutlery"></i> Chili pepper</strong>
-            <small>
-              <i class="fa fa-map-marker"></i> 
-              Chilli Pepper Multi Cuisine Restaurant Rohini, Delhi NCR, India address G 89-90, Near M2K Cinemas, Aggarwal City Plaza, Sector 3, Rohini, New Delhi 110085
-            </small>
-          </div>
-          <div class="clear"></div>
-          <div class="restaurant-short-price">
-          <strong>Min Order : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery Fee : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery On Time : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          </div>
-        </div>
-        <div class="col-md-3 restaurant-rate">
-          <div><img height="75px" width="75px" src="assets/img/star.png"></div>
-          <div>5 Rating</div>
-          <div><a href="#" class="btn btn-info">Order Now</a></div>
-        </div>
-      </div>
-      <div class="col-md-4">We also deliver ready to cook healthy meal kits at your doorstep. Just cook and enjoy your own handmade made food without wasting the ingredients or the food.</div>
-    </div>
-    
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        
-      </div>
-    <div class="col-md-9 restaurant-list-block padding-left-none wow bounceInRight animated">
-      <div class="col-md-8 padding-left-none">
-        <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
-          <div class="restaurant-logo"><img src="assets/img/restaurant_logo.jpg" /></div>
-          <div class="restaurant-short-details"><strong><i class="fa fa-cutlery"></i> Chili pepper</strong>
-            <small>
-              <i class="fa fa-map-marker"></i> 
-              Chilli Pepper Multi Cuisine Restaurant Rohini, Delhi NCR, India address G 89-90, Near M2K Cinemas, Aggarwal City Plaza, Sector 3, Rohini, New Delhi 110085
-            </small>
-          </div>
-          <div class="clear"></div>
-          <div class="restaurant-short-price">
-          <strong>Min Order : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery Fee : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery On Time : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          </div>
-        </div>
-        <div class="col-md-3 restaurant-rate">
-          <div><img height="75px" width="75px" src="assets/img/star.png"></div>
-          <div>5 Rating</div>
-          <div><a href="#" class="btn btn-info">Order Now</a></div>
-        </div>
-      </div>
-      <div class="col-md-4">We also deliver ready to cook healthy meal kits at your doorstep. Just cook and enjoy your own handmade made food without wasting the ingredients or the food.</div>
-    </div>
-    
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        
-      </div>
-    <div class="col-md-9 restaurant-list-block padding-left-none wow bounceInLeft animated">
-      <div class="col-md-8 padding-left-none">
-        <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
-          <div class="restaurant-logo"><img src="assets/img/restaurant_logo.jpg" /></div>
-          <div class="restaurant-short-details"><strong><i class="fa fa-cutlery"></i> Chili pepper</strong>
-            <small>
-              <i class="fa fa-map-marker"></i> 
-              Chilli Pepper Multi Cuisine Restaurant Rohini, Delhi NCR, India address G 89-90, Near M2K Cinemas, Aggarwal City Plaza, Sector 3, Rohini, New Delhi 110085
-            </small>
-          </div>
-          <div class="clear"></div>
-          <div class="restaurant-short-price">
-          <strong>Min Order : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery Fee : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery On Time : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          </div>
-        </div>
-        <div class="col-md-3 restaurant-rate">
-          <div><img height="75px" width="75px" src="assets/img/star.png"></div>
-          <div>5 Rating</div>
-          <div><a href="#" class="btn btn-info">Order Now</a></div>
-        </div>
-      </div>
-      <div class="col-md-4">We also deliver ready to cook healthy meal kits at your doorstep. Just cook and enjoy your own handmade made food without wasting the ingredients or the food.</div>
-    </div>
-    
-    </div>
-    <div class="row">
-      <div class="col-md-3 ">
-        
-      </div>
-    <div class="col-md-9 restaurant-list-block padding-left-none wow bounceInRight animated">
-      <div class="col-md-8 padding-left-none">
-        <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
-          <div class="restaurant-logo"><img src="assets/img/restaurant_logo.jpg" /></div>
-          <div class="restaurant-short-details"><strong><i class="fa fa-cutlery"></i> Chili pepper</strong>
-            <small>
-              <i class="fa fa-map-marker"></i> 
-              Chilli Pepper Multi Cuisine Restaurant Rohini, Delhi NCR, India address G 89-90, Near M2K Cinemas, Aggarwal City Plaza, Sector 3, Rohini, New Delhi 110085
-            </small>
-          </div>
-          <div class="clear"></div>
-          <div class="restaurant-short-price">
-          <strong>Min Order : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery Fee : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery On Time : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          </div>
-        </div>
-        <div class="col-md-3 restaurant-rate">
-          <div><img height="75px" width="75px" src="assets/img/star.png"></div>
-          <div>5 Rating</div>
-          <div><a href="#" class="btn btn-info">Order Now</a></div>
-        </div>
-      </div>
-      <div class="col-md-4">We also deliver ready to cook healthy meal kits at your doorstep. Just cook and enjoy your own handmade made food without wasting the ingredients or the food.</div>
-    </div>
-    
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        
-      </div>
-    <div class="col-md-9 restaurant-list-block padding-left-none wow bounceInLeft animated">
-      <div class="col-md-8 padding-left-none">
-        <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
-          <div class="restaurant-logo"><img src="assets/img/restaurant_logo.jpg" /></div>
-          <div class="restaurant-short-details"><strong><i class="fa fa-cutlery"></i> Chili pepper</strong>
-            <small>
-              <i class="fa fa-map-marker"></i> 
-              Chilli Pepper Multi Cuisine Restaurant Rohini, Delhi NCR, India address G 89-90, Near M2K Cinemas, Aggarwal City Plaza, Sector 3, Rohini, New Delhi 110085
-            </small>
-          </div>
-          <div class="clear"></div>
-          <div class="restaurant-short-price">
-          <strong>Min Order : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery Fee : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          <strong>Delivery On Time : <small><i class="fa fa-rupee"></i> 100</small></strong>
-          </div>
-        </div>
-        <div class="col-md-3 restaurant-rate">
-          <div><img height="75px" width="75px" src="assets/img/star.png"></div>
-          <div>5 Rating</div>
-          <div><a href="#" class="btn btn-info">Order Now</a></div>
-        </div>
-      </div>
-      <div class="col-md-4">We also deliver ready to cook healthy meal kits at your doorstep. Just cook and enjoy your own handmade made food without wasting the ingredients or the food.</div>
-    </div>
-    
-    </div>
-    </div>
+  </div>
+</div>
