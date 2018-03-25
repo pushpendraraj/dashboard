@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DataService } from './data.service';
 import { Routing } from '../app/app.routing';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -20,7 +21,8 @@ import { AboutComponent } from './about/about.component';
   ],
   imports: [
     BrowserModule,
-    Routing
+    Routing,
+    HttpModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

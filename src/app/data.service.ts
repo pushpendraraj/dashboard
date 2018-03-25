@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { map } from 'rxjs/operators';
+// import { map } from 'rxjs/operator/map';
+import { Http, Response } from '@angular/http';
+import { environment } from '../environments/environment';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class DataService {
-  restaurants = [{
-    id:1,
-    name:'Test Restaurants',
-  }];
+  APIURL = environment.apiUrl;
+  constructor( private http : Http) { }
 
-  respr = [1, 2, 3, 4, 5];
-  constructor() { }
-
-  getRestaurants():Observable<any>{
-    return of(this.restaurants);
+  getRestaurants(): Observable<any>{
+    return this.http.get(this.APIURL+'list-restaurants')
+      .map((res:Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'server error')) 
   }
 
 }

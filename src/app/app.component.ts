@@ -37,7 +37,7 @@ export class AppComponent {
     }
 
     if(state && parent) {
-      data.push(this.getTitle(state, state.firstChild(parent)));
+      data.push(... this.getTitle(state, state.firstChild(parent)));
     }
     return data;
   }

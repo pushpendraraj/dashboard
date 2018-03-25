@@ -12,13 +12,15 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getRestaurants().subscribe({
-      next(response) { console.log(response); },
-      error(err) { console.error('Error: ' + err); },
-      complete() { console.log('Completed'); }
+      next(response) { 
+        console.log(response); 
+      },
+      error(err) { 
+        console.error('Error: ' + err); 
+      },
+      complete() { 
+        console.log('Completed'); 
+      }
      });
-    console.log(this.restaurants);
   }
-
-
-
 }
