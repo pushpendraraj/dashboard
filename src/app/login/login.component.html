@@ -1,0 +1,67 @@
+<div class="modal-dialog">
+  <div class="modal-content" id="Login">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="close()">&times;</button>
+      <h4>
+        <i class="fa fa-sign-in"></i> Member Login
+        <br>
+        <small>Welcome back, Login to get started</small>
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div class="col-md-12">
+        <section class="social-login">
+          <a class="btn btn-block btn-social btn-facebook" href="http://sizzlingcuisines.comlogins/facebook">
+            <span class="fa fa-facebook"></span> Sign in with facebook
+          </a>
+          <a class="btn btn-block btn-social btn-twitter" href="http://sizzlingcuisines.comlogins/twitter">
+            <span class="fa fa-twitter"></span> Sign in with twitter
+          </a>
+          <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Ffoodstar%2Flogins%2Fgoogle_callback&client_id=21081424908-g07aeea2cno6s4s78jefejepls2dk20l.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&access_type=offline&approval_prompt=force"
+            class="btn btn-block btn-social btn-google">
+            <span class="fa fa-google-plus"></span> Sign in with google+
+          </a>
+        </section>
+        <span class="or">OR</span>
+        <section class="login-panel">
+          <form action="/logins/login" id="LoginPanel" method="post" accept-charset="utf-8">
+            <div style="display:none;">
+              <input type="hidden" name="_method" value="POST" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-user"></i>
+              </span>
+              <input name="data[User][username]" placeholder="Username or Email" class="form-control" type="text" id="UserUsername" required="required"
+              /> </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-key"></i>
+              </span>
+              <input name="data[User][password]" placeholder="Password" class="form-control" type="password" id="UserPassword" required="required"
+              /> </div>
+            <div class="remember">
+              <input type="checkbox" name="data[User][remember]" value="1" id="UserRemember" />
+              <span id="basic-addon1">Remember me</span>
+              <a id="forgot" href="#Forgot">Forgot Password</a>
+            </div>
+            <div class="submit">
+              <input class="btn btn-primary btn-block" type="submit" value="Login" />
+            </div>
+          </form>
+        </section>
+      </div>
+      <div class="col-md-12 not-a-member">
+        <span> Not a mebmber with us?</span>
+        <strong>
+          <a id="signUp" (click)='openModal("register")'>Register</a>
+        </strong>
+      </div>
+
+    </div>
+    <div class="modal-footer clear">
+      <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+      <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-restaurant',
@@ -8,16 +9,20 @@ import { DataService } from '../data.service';
 })
 export class RestaurantComponent implements OnInit {
   restaurants = [];
-  constructor(private dataService : DataService) { }
+  constructor(private dataService : DataService, private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
-    
     this.dataService.getRestaurants().subscribe(
       data=>{
+        this.spinnerService.show();
         this.restaurants = data;
       },
       err =>{
-        
-      });
+        this.spinnerService.hide();
+      },
+      ()=>{
+       this.spinnerService.hide();
+      }
+    );
   }
 }

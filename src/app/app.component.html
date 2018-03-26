@@ -30,13 +30,14 @@
     <li><a routerLink="/" ><img src="assets/img/logo2.png" /></a></li>
     <li>
         <ul class="wow bounceInDown animated">
-          <li><a href="#Login" id="signIn" target="_blank"><i class="fa fa-sign-in"></i>Login</a></li>     
+          <li><a (click)='openModal("login")' id="signIn" target="_blank"><i class="fa fa-sign-in"></i>Login</a></li>     
           <!-- <li><a href="logins/logout"><i class="fa fa-sign-out"></i>Logout</a></li>     -->
         </ul>
       </li>
   </ul>
 </div>
 <section id="{{sectionId}}" class="intro">
+  <ng4-loading-spinner> </ng4-loading-spinner>
   <router-outlet></router-outlet>
 </section>
 <footer id="footer" *ngIf="displayFooter">

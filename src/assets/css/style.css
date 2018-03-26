@@ -910,7 +910,7 @@
 	nav.gn-menu-wrapper ul.gn-menu li>a{font-size: 15px;}
 	.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{background: #EB5D1E !important;}
 	.company-social-home{position: absolute; bottom: 20px; right: 10px;}
-	#Login, #Register, #Forgot, #Success{display: none;width: 400px;}
+	#Login, #Register, #Forgot, #Success{width: 100%;}
 	/*----------- login popup -----------------*/
 	#Login span.or{
 	display: block;
@@ -1077,3 +1077,4 @@
 	  margin-right: 5%;
 	  width: auto;
 	}
+	#signUp, #signIn{cursor: pointer;}

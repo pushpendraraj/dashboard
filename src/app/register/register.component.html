@@ -1,0 +1,64 @@
+<div class="modal-dialog">
+  <div class="modal-content" id="Register">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="close()">&times;</button>
+      <h4>
+        <i class="fa fa-pencil-square-o"></i> Member Register
+        <br>
+        <small>Ready to get best offers? Let's get started!</small>
+      </h4>
+    </div>
+    <div class="modal-body">
+      <div class="col-md-12">
+        <section class="registration-panel">
+          <form action="/logins/register" id="RegistrationPanel" method="post" accept-charset="utf-8">
+            <div style="display:none;">
+              <input type="hidden" name="_method" value="POST" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-user"></i>
+              </span>
+              <input name="data[User][username]" placeholder="Username" class="form-control" onkeyup="checkUserName(this.value)" type="text"
+                id="UserUsername" required="required" />
+              <span id="UserNameloader"></span>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-envelope"></i>
+              </span>
+              <input name="data[User][email]" placeholder="Email" class="form-control" onkeyup="checkEmail(this.value)" type="email" id="UserEmail"
+                required="required" />
+              <span id="Emailloader"></span>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-key"></i>
+              </span>
+              <input name="data[User][password]" placeholder="Password" class="form-control" type="password" id="UserPassword" required="required"
+              /> </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-phone-square"></i>
+              </span>
+              <input name="data[User][contact_no]" placeholder="Contact No." class="form-control" type="text" id="UserContactNo" required="required"
+              /> </div>
+            <div class="submit">
+              <input class="btn btn-primary btn-block" type="submit" value="Register" />
+            </div>
+          </form>
+        </section>
+      </div>
+      <div class="col-md-12 is-a-member">
+        <span> Already register with us?</span>
+        <strong>
+          <a id="signIn" (click)='openModal("login")'>Login</a>
+        </strong>
+      </div>
+    </div>
+    <div class="modal-footer clear">
+      <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+      <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>
