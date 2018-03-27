@@ -1,0 +1,19 @@
+<div class="container content-section">
+  <div class="col-md-12 wow rollIn animated">
+    <h3 class="page-title" [innerHTML]="pageTitle"></h3>
+    <nav class="breadcrumb" [innerHTML]="breadcrumb"></nav>
+    <div class="panel-group" id="accordion">
+      <div *ngFor="let blog of blogs" class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a (click)="getBlogDetails($event)" data-expand="true" [attr.data-id]="blog.blog_id" href="javascript:void(0)">
+              {{blog.blog_title}}</a>
+          </h4>
+        </div>
+        <div id="collapse{{blog.bllog_id}}" [ngClass]="className" style="height:auto;" class="panel-collapse collapse">
+          <div class="panel-body">{{blogDetails}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

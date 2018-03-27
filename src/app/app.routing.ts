@@ -3,6 +3,7 @@ import { HomeComponent } from '../app/home/home.component';
 import { RestaurantComponent } from '../app/restaurant/restaurant.component';
 import { PageNotFoundComponent } from '../app/page-not-found/page-not-found.component';
 import { AboutComponent } from '../app/about/about.component';
+import { BlogComponent } from '../app/blog/blog.component';
 
 const appRoutes: Routes = [
     {
@@ -19,6 +20,11 @@ const appRoutes: Routes = [
         path:'about',
         component:AboutComponent,
         data:{title:'About Us'}
+    },
+    {
+        path:'blogs',
+        component:BlogComponent,
+        data:{title:'Blogs'}
     },
     {
         path:'**',

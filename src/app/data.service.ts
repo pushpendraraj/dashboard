@@ -17,4 +17,10 @@ export class DataService {
       .catch((error: any) => Observable.throw(error.json().error || 'server error')) 
   }
 
+  getBlogs():Observable<any>{
+    return this.http.get(this.APIURL+'list-blogs')
+    .map((res:Response)=>res.json())
+    .catch((error:any) =>Observable.throw(error.json().error || 'server error')) 
+  }
+
 }

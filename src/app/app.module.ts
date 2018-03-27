@@ -14,6 +14,9 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { BlogComponent } from './blog/blog.component';
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { RegisterComponent } from './register/register.component';
     PageNotFoundComponent,
     AboutComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BlogComponent,
+    BlogDetailsComponent,
+    BlogCommentsComponent
   ],
   imports: [
     BrowserModule,

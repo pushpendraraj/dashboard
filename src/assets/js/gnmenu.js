@@ -62,7 +62,7 @@
 					document.addEventListener( self.eventtype, self.bodyClickFn );
 				}
 			} );
-			this.menu.addEventListener( this.eventtype, function(ev) { ev.stopPropagation(); } );
+			this.menu.addEventListener( this.eventtype, function(ev) { self._closeMenu(); ev.stopPropagation(); } );
 		},
 		_openIconMenu : function() {
 			classie.add( this.menu, 'gn-open-part' );

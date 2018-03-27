@@ -106,7 +106,7 @@
 	a:hover,
 	a:focus {
 	text-decoration: none;
-	color: #176e61;
+	color: #EB5D1E;
 	}
 	
 	.light {
@@ -1078,3 +1078,15 @@
 	  width: auto;
 	}
 	#signUp, #signIn{cursor: pointer;}
+	.page-title{
+		margin-bottom: 1%;
+	   color: #EB5D1E;
+	   font-family:Montserrat,sans-serif;
+   }
+   .breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: #636c72;
+    content: "/";
+}
