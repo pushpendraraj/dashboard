@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-// import { RestaurantFilterPipe } from '../restaurant-filter.pipe';
 
 @Component({
   selector: 'app-restaurant',
@@ -10,6 +9,9 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 })
 export class RestaurantComponent implements OnInit {
   restaurants = [];
+  pageTitle = 'Restaurants';
+  breadcrumb = `<a class="breadcrumb-item" href="#">Home</a>
+  <span class="breadcrumb-item active">Restaurants</span>`;
   constructor(private dataService : DataService, private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {

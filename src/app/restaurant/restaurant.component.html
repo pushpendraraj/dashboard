@@ -1,54 +1,50 @@
 <div class="container content-section">
-  <div *ngFor="let restaurant of restaurants | restaurantFilter:restaurantName;" class="row">
-    <div class="col-md-3">
-      <form class="form-horizontal">
-        <div class="form-group">
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="restaurant_name" [(ngModel)]="restaurantName" placeholder="Search">
-          </div>
+  <div class="col-md-12 padding-left-none padding-right-none">
+    <h3 class="page-title" [innerHTML]="pageTitle"></h3>
+    <nav class="breadcrumb" [innerHTML]="breadcrumb"></nav>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="restaurant_name" [(ngModel)]="restaurantName" placeholder="Search">
         </div>
-        <div class="form-group">
-          <div class="col-sm-10">
-            <select data-placeholder="Choose a Country" class="chosen-select form-control" tabindex="2">
-              <option value="">Short By Option</option>
-              <option value="United States">United States</option>
-              <option value="United Kingdom">United Kingdom</option>
-              <option value="Afghanistan">Afghanistan</option>
-              <option value="Albania">Albania</option>
-              <option value="Algeria">Algeria</option>
-              <option value="American Samoa">American Samoa</option>
-              <option value="Andorra">Andorra</option>
-              <option value="Angola">Angola</option>
-              <option value="Anguilla">Anguilla</option>
-              <option value="Antarctica">Antarctica</option>
-            </select>
-          </div>
+        <div class="col-sm-3">
+          <select data-placeholder="Choose a Country" [(ngModel)]="cusineName" class="chosen-select form-control" tabindex="2">
+            <option value="">Short By Option</option>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Albania">Albania</option>
+            <option value="Algeria">Algeria</option>
+            <option value="American Samoa">American Samoa</option>
+            <option value="Andorra">Andorra</option>
+            <option value="Angola">Angola</option>
+            <option value="Anguilla">Anguilla</option>
+            <option value="Antarctica">Antarctica</option>
+          </select>
         </div>
-        <div class="form-group">
-          <div class="col-sm-10">
-            <select data-placeholder="Choose a Country" class="chosen-select form-control" tabindex="2">
-              <option value="">Select Cuisine</option>
-              <option value="United States">United States</option>
-              <option value="United Kingdom">United Kingdom</option>
-              <option value="Afghanistan">Afghanistan</option>
-              <option value="Albania">Albania</option>
-              <option value="Algeria">Algeria</option>
-              <option value="American Samoa">American Samoa</option>
-              <option value="Andorra">Andorra</option>
-              <option value="Angola">Angola</option>
-              <option value="Anguilla">Anguilla</option>
-              <option value="Antarctica">Antarctica</option>
-            </select>
-          </div>
+        <div class="col-sm-3">
+          <select data-placeholder="Choose a Country" class="chosen-select form-control" tabindex="2">
+            <option value="">Select Cuisine</option>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Albania">Albania</option>
+            <option value="Algeria">Algeria</option>
+            <option value="American Samoa">American Samoa</option>
+            <option value="Andorra">Andorra</option>
+            <option value="Angola">Angola</option>
+            <option value="Anguilla">Anguilla</option>
+            <option value="Antarctica">Antarctica</option>
+          </select>
         </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-skin">Search</button>
-          </div>
+        <div class="col-sm-2 text-right">
+          <button type="submit" class="btn btn-skin">Search</button>
         </div>
-      </form>
-    </div>
-    <div class="col-md-9 pull-left restaurant-list-block padding-left-none wow bounceInRight animated">
+      </div>
+    </form>
+  </div>
+  <div *ngFor="let restaurant of restaurants | restaurantFilter:restaurantName:cusineName;">
+    <div class="col-md-12 pull-left restaurant-list-block padding-left-none wow bounceInRight animated">
       <div class="col-md-8 padding-left-none">
         <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
           <div class="restaurant-logo">
@@ -126,4 +122,5 @@
       </div>
     </div>
   </div>
+  <div *ngIf="!(restaurants| restaurantFilter:restaurantName).length" class="alert alert-danger clear text-center">No Record matched!</div>
 </div>
