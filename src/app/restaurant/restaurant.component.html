@@ -1,10 +1,10 @@
 <div class="container content-section">
-  <div *ngFor="let restaurant of restaurants;" class="row">
+  <div *ngFor="let restaurant of restaurants | restaurantFilter:restaurantName;" class="row">
     <div class="col-md-3">
       <form class="form-horizontal">
         <div class="form-group">
           <div class="col-sm-10">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" name="restaurant_name" [(ngModel)]="restaurantName" placeholder="Search">
           </div>
         </div>
         <div class="form-group">

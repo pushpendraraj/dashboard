@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { RestaurantFilterPipe } from '../restaurant-filter.pipe';
 
 @Component({
   selector: 'app-restaurant',

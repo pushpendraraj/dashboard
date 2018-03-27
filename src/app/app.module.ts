@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DataService } from './data.service';
 import { Routing } from '../app/app.routing';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
+import { RestaurantFilterPipe } from './restaurant-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,14 @@ import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
     RegisterComponent,
     BlogComponent,
     BlogDetailsComponent,
-    BlogCommentsComponent
+    BlogCommentsComponent,
+    RestaurantFilterPipe
   ],
   imports: [
     BrowserModule,
     Routing,
     HttpModule,
+    FormsModule,
     Ng4LoadingSpinnerModule.forRoot(),
     BootstrapModalModule.forRoot({container:document.body})
   ],
