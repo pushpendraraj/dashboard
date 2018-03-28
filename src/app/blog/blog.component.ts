@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { DataService } from '../data.service';
+import { connect } from 'tls';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -12,7 +13,7 @@ export class BlogComponent implements OnInit {
   blogDetails:string;
   className:string;
   blogs = [];
-  constructor(private dataService : DataService) { }
+  constructor(private dataService : DataService, private elRef:ElementRef) { }
 
   ngOnInit() {
     this.getBlogs();
@@ -33,20 +34,18 @@ export class BlogComponent implements OnInit {
   }
 
   getBlogDetails(event){
-    console.log(event);
-    console.log(event.target.parentNode.parentNode);
-
-
     let blogId = event.target.attributes['data-id'].value;
     let blogExpand = event.target.attributes['data-expand'].value;
+    let emlement = this.elRef.nativeElement.querySelector('#collapse'+blogId);
+  
     if(blogExpand =='true'){
-      this.blogDetails = 'this is test blog details';
-      this.className = 'in'; 
+      emlement.html = 'this is test blog details';
+      emlement.className = 'panel-collapse collapse in'; 
       event.target.attributes['data-expand'].value = false;
     }else{
       event.target.attributes['data-expand'].value = true;
       this.blogDetails = '';
-      this.className = ''; 
+      emlement.className = 'panel-collapse collapse'; 
     }   
   }
 
