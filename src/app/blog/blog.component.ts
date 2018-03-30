@@ -1,6 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { DataService } from '../data.service';
-import { connect } from 'tls';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',

@@ -2,15 +2,15 @@
   <div class="col-md-12 padding-left-none padding-right-none">
     <h3 class="page-title" [innerHTML]="pageTitle"></h3>
     <nav class="breadcrumb" [innerHTML]="breadcrumb"></nav>
-    <form class="form-horizontal">
+    <form #values="ngForm" class="form-horizontal">
       <div class="form-group">
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="restaurant_name" [(ngModel)]="restaurantName" placeholder="Search">
+          <input type="text" class="form-control" name="restaurantName" [(ngModel)]="restaurantName" placeholder="Search">
         </div>
         <div class="col-sm-3">
-          <select data-placeholder="Choose a Country" [(ngModel)]="cusineName" class="chosen-select form-control" tabindex="2">
-            <option value="">Short By Option</option>
+          <select name="cusineName" [(ngModel)]="cusineName" class="chosen-select form-control">
             <option value="United States">United States</option>
+            <option *ngFor="let cuisine of cuisines;" value="cuisine.cuisine_id">{{cuisine.cuisine_name}}</option>
             <option value="United Kingdom">United Kingdom</option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="Albania">Albania</option>
@@ -43,12 +43,12 @@
       </div>
     </form>
   </div>
-  <div *ngFor="let restaurant of restaurants | restaurantFilter:restaurantName:cusineName;">
+  <div *ngFor="let restaurant of restaurants | restaurantFilter:{searchTxt:restaurantName,cusineId:cusineName}">
     <div class="col-md-12 pull-left restaurant-list-block padding-left-none wow bounceInRight animated">
       <div class="col-md-8 padding-left-none">
         <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
           <div class="restaurant-logo">
-            <img [src]="restaurant.restaurant_logo" />
+            <!-- <img [src]="restaurant.restaurant_logo" /> -->
           </div>
           <div class="restaurant-short-details">
             <strong>
@@ -87,7 +87,7 @@
       <div class="col-md-4">
         <div class="restaurant-video">
           <a href="https://www.youtube.com/embed/iqCFI2vOEq4">
-            <img src="http://i3.ytimg.com/vi/iqCFI2vOEq4/hqdefault.jpg">
+            <!-- <img src="http://i3.ytimg.com/vi/iqCFI2vOEq4/hqdefault.jpg"> -->
           </a>
         </div>
         <div class="restaurant-thumb-images">
@@ -122,5 +122,5 @@
       </div>
     </div>
   </div>
-  <div *ngIf="!(restaurants| restaurantFilter:restaurantName).length" class="alert alert-danger clear text-center">No Record matched!</div>
+  <div *ngIf="!(restaurants| restaurantFilter:{searchTxt:restaurantName,cusineId:cusineName}).length" class="alert alert-danger clear text-center">No Record matched!</div>
 </div>

@@ -23,4 +23,9 @@ export class DataService {
     .catch((error:any) =>Observable.throw(error.json().error || 'server error')) 
   }
 
+  getCuisines():Observable<any>{
+    return this.http.get(this.APIURL+'list-cuisines')
+    .map((res:Response)=>res.json())
+    .catch((error:any) =>Observable.throw(error.json().error || 'server error'))
+  }
 }
