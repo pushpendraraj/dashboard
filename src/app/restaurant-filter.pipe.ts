@@ -4,22 +4,32 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RestaurantFilterPipe implements PipeTransform {
   transform(restaurants: any, searchQuery: any): any {
-    
-    if(searchQuery.searchTxt===undefined && searchQuery.cusineId===undefined){
+    if(searchQuery.searchTxt===undefined && searchQuery.cuisineId===undefined){
       return restaurants;
     }else if(searchQuery.searchTxt===undefined){
-      
-      return restaurants.filter(function(restaurant){
-        // if(restaurant.cuisine_id)
-        console.log(restaurant.cuisine_id)
-        //return restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase());
+      let reastr = restaurants.filter(function(restaurant){
+        if(restaurant.cuisine_id.indexOf(searchQuery.cuisineId)!=-1){
+          return false;
+        }else{
+          return restaurant;
+        }
       })
-    }else if(searchQuery.cusineId===undefined){
+    }else if(searchQuery.cuisineId===undefined){
       return restaurants.filter(function(restaurant){
         return restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase());
       })
     }else{
-
+      return restaurants.filter(function(restaurant){
+        if(restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase())){
+          if(restaurant.cuisine_id.indexOf(searchQuery.cuisineId)!=-1){
+            return restaurant;
+          }else{
+            return false;
+          }
+        }else{
+          return false;
+        }
+      })
     }
    
     // return restaurants.filter(function(restaurant){

@@ -14,6 +14,8 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
   breadcrumb = `<a class="breadcrumb-item" href="#">Home</a>
   <span class="breadcrumb-item active">Restaurants</span>`;
   cuisines = [];
+  restaurantName = '';
+  cuisineName = '';
   constructor(
     private dataService : DataService, 
     private spinnerService: Ng4LoadingSpinnerService
