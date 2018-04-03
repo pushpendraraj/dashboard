@@ -12,7 +12,7 @@ export class DataService {
   constructor( private http : Http) { }
 
   getRestaurants(): Observable<any>{
-    return this.http.get(this.APIURL+'list-restaurants')
+    return this.http.get(this.APIURL+'list-restaurants/')
       .map((res:Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'server error')) 
   }
@@ -27,5 +27,12 @@ export class DataService {
     return this.http.get(this.APIURL+'list-cuisines')
     .map((res:Response)=>res.json())
     .catch((error:any) =>Observable.throw(error.json().error || 'server error'))
+  }
+
+  geCuisinesByIds(Ids:string):Observable<string>{
+    return this.http.get(this.APIURL+'get-cuisines-by-id/'+Ids)
+    .map((res:Response)=> res.json())
+    .catch((error:any)=>Observable.throw(error.json().error || 'server error'))
+
   }
 }

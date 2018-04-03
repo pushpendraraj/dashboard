@@ -31,84 +31,86 @@
       </div>
     </form>
   </div>
-  <div *ngFor="let restaurant of restaurants | restaurantFilter:{searchTxt:restaurantName,cuisineId:cuisineName}">
-    <div class="col-md-12 pull-left restaurant-list-block padding-left-none wow bounceInRight animated">
-      <div class="col-md-8 padding-left-none">
-        <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
-          <div class="restaurant-logo">
-            <!-- <img [src]="restaurant.restaurant_logo" /> -->
+  <div *ngFor="let restaurant of restaurants | restaurantFilter:{searchTxt:restaurantName,cuisineId:cuisineName};">
+    <ng-container *ngIf="restaurant">
+      <div class="col-md-12 pull-left restaurant-list-block padding-left-none wow bounceInRight animated">
+        <div class="col-md-8 padding-left-none">
+          <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
+            <div class="restaurant-logo">
+              <!-- <img [src]="restaurant.restaurant_logo" /> -->
+            </div>
+            <div class="restaurant-short-details">
+              <strong>
+                <i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</strong>
+              <small>
+                <i class="fa fa-map-marker"></i>
+                {{restaurant.location}}
+              </small>
+            </div>
+            <div class="clear"></div>
+            <div class="restaurant-short-price">
+              <strong>Min Order :
+                <small>
+                  <i class="fa fa-rupee"></i> {{restaurant.min_order}}</small>
+              </strong>
+              <strong>Delivery Fee :
+                <small>
+                  <i class="fa fa-rupee"></i> {{restaurant.delivery_charge}}</small>
+              </strong>
+              <strong>Delivery On Time :
+                <small>
+                  <i class="fa fa-rupee"></i> {{restaurant.delivery_on_time}}</small>
+              </strong>
+            </div>
           </div>
-          <div class="restaurant-short-details">
-            <strong>
-              <i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</strong>
-            <small>
-              <i class="fa fa-map-marker"></i>
-              {{restaurant.location}}
-            </small>
-          </div>
-          <div class="clear"></div>
-          <div class="restaurant-short-price">
-            <strong>Min Order :
-              <small>
-                <i class="fa fa-rupee"></i> {{restaurant.min_order}}</small>
-            </strong>
-            <strong>Delivery Fee :
-              <small>
-                <i class="fa fa-rupee"></i> {{restaurant.delivery_charge}}</small>
-            </strong>
-            <strong>Delivery On Time :
-              <small>
-                <i class="fa fa-rupee"></i> {{restaurant.delivery_on_time}}</small>
-            </strong>
+          <div class="col-md-3 restaurant-rate">
+            <div>
+              <img height="75px" width="75px" src="assets/img/star.png">
+            </div>
+            <div>5 Rating</div>
+            <div>
+              <a href="#" class="btn btn-info">Order Now</a>
+            </div>
           </div>
         </div>
-        <div class="col-md-3 restaurant-rate">
-          <div>
-            <img height="75px" width="75px" src="assets/img/star.png">
+        <div class="col-md-4">
+          <div class="restaurant-video">
+            <a href="https://www.youtube.com/embed/iqCFI2vOEq4">
+              <!-- <img src="http://i3.ytimg.com/vi/iqCFI2vOEq4/hqdefault.jpg"> -->
+            </a>
           </div>
-          <div>5 Rating</div>
-          <div>
-            <a href="#" class="btn btn-info">Order Now</a>
+          <div class="restaurant-thumb-images">
+            <ul>
+              <li>
+                <a href="#">
+                  <img src="assets/img/restaurant_logo.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="assets/img/restaurant_logo.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="assets/img/restaurant_logo.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="assets/img/restaurant_logo.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="assets/img/restaurant_logo.jpg">
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="restaurant-video">
-          <a href="https://www.youtube.com/embed/iqCFI2vOEq4">
-            <!-- <img src="http://i3.ytimg.com/vi/iqCFI2vOEq4/hqdefault.jpg"> -->
-          </a>
-        </div>
-        <div class="restaurant-thumb-images">
-          <ul>
-            <li>
-              <a href="#">
-                <img src="assets/img/restaurant_logo.jpg">
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="assets/img/restaurant_logo.jpg">
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="assets/img/restaurant_logo.jpg">
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="assets/img/restaurant_logo.jpg">
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="assets/img/restaurant_logo.jpg">
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    </ng-container>
   </div>
   <div *ngIf="!(restaurants| restaurantFilter:{searchTxt:restaurantName,cuisineId:cuisineName}).length" class="alert alert-danger clear text-center">No Record matched!</div>
 </div>

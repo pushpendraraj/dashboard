@@ -33,10 +33,17 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
   }
 
   getRestaurants(){
+    this.getCuisineByIds('11,12');
     this.spinnerService.show();
     this.dataService.getRestaurants().subscribe(
       (data)=>{
-        this.restaurants = data;
+        let tempArr = [];
+        data.forEach(restaurant => {
+          // console.log(restaurant)
+          restaurant.cusineNames = 'Test';
+          tempArr.push(restaurant);
+        });
+        this.restaurants = tempArr;
       },
       (err) =>{
         this.spinnerService.hide();
@@ -47,6 +54,15 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
     );
   }
 
+  getCuisineByIds(Ids){
+    let formatedId = Ids.split(',').join('/');
+    this.dataService.geCuisinesByIds(formatedId).subscribe((data)=>{
+      return data;
+    },
+    (err) =>{
+      this.spinnerService.hide();
+    });
+  }
   getCuisines(){
     this.spinnerService.show();
     this.dataService.getCuisines()
