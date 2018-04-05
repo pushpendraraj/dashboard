@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, OnChanges, DoCheck, AfterContentInit,
 import { DataService } from '../data.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Http } from '@angular/http';
+import { concat } from 'rxjs/operators';
 
 @Component({
   selector: 'app-restaurant',
@@ -33,7 +34,8 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
   }
 
   getRestaurants(){
-    this.getCuisineByIds('11,12');
+    let  a = this.getCuisineByIds('11,12');
+    console.log('dddd'+a)
     this.spinnerService.show();
     this.dataService.getRestaurants().subscribe(
       (data)=>{
@@ -55,14 +57,20 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
   }
 
   getCuisineByIds(Ids){
-    let formatedId = Ids.split(',').join('/');
-    this.dataService.geCuisinesByIds(formatedId).subscribe((data)=>{
-      return data;
+    let tempArr = [];
+    this.dataService.geCuisinesByIds(Ids).subscribe((data)=>{ 
+      console.log(typeof(data))
+      console.log(data)
+      // for(let i = 0; i<data.length; i++){
+      //   tempArr.push(data[i].cuisine_name);
+      // }
+      // this.resCuisineName = tempArr.join(', ');  
     },
     (err) =>{
-      this.spinnerService.hide();
+      // this.spinnerService.hide();
     });
   }
+
   getCuisines(){
     this.spinnerService.show();
     this.dataService.getCuisines()
@@ -71,7 +79,7 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
         this.cuisines = data;
       },
       (err)=>{ 
-        console.log(err);
+        // console.log(err);
         this.spinnerService.hide();
       },
       ()=>{
