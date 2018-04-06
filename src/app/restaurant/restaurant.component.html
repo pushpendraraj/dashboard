@@ -37,11 +37,13 @@
         <div class="col-md-8 padding-left-none">
           <div class="col-md-9 padding-left-none padding-right-none restaurant-list">
             <div class="restaurant-logo">
-              <!-- <img [src]="restaurant.restaurant_logo" /> -->
+              <img [src]="restaurant.restaurant_logo?'assets/img/restaurant_logo.jpg':''" />
             </div>
             <div class="restaurant-short-details">
-              <strong>
-                <i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</strong>
+              <h5><i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</h5>
+              <strong>                
+                {{restaurant.cusineNames}}
+              </strong>
               <small>
                 <i class="fa fa-map-marker"></i>
                 {{restaurant.location}}

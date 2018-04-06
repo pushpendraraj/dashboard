@@ -17,6 +17,7 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
   cuisines = [];
   restaurantName = '';
   cuisineName = '';
+  resCuisine = '';
   constructor(
     private dataService : DataService, 
     private spinnerService: Ng4LoadingSpinnerService
@@ -30,19 +31,23 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
   ngOnInit() {
     this.getCuisines();
     this.getRestaurants();
-    // console.log('ng init')
   }
 
   getRestaurants(){
-    let  a = this.getCuisineByIds('11,12');
-    console.log('dddd'+a)
     this.spinnerService.show();
     this.dataService.getRestaurants().subscribe(
       (data)=>{
         let tempArr = [];
+        let ctempArr = [];
         data.forEach(restaurant => {
-          // console.log(restaurant)
-          restaurant.cusineNames = 'Test';
+          if(restaurant.cuisine_id!=undefined && restaurant.cuisine_id!=''){
+            this.dataService.geCuisinesByIds(restaurant.cuisine_id).subscribe((cdata)=>{ 
+              for(let i = 0; i<cdata.length; i++){
+                ctempArr.push(cdata[i].cuisine_name);
+              }
+              restaurant.cusineNames = ctempArr.join(', ');  
+            });
+          }
           tempArr.push(restaurant);
         });
         this.restaurants = tempArr;
@@ -56,18 +61,20 @@ export class RestaurantComponent implements OnInit, OnDestroy, AfterViewInit,Aft
     );
   }
 
-  getCuisineByIds(Ids){
+  getCuisineByIds(Ids, callback){
+    this.spinnerService.show();
     let tempArr = [];
     this.dataService.geCuisinesByIds(Ids).subscribe((data)=>{ 
-      console.log(typeof(data))
-      console.log(data)
-      // for(let i = 0; i<data.length; i++){
-      //   tempArr.push(data[i].cuisine_name);
-      // }
-      // this.resCuisineName = tempArr.join(', ');  
+      for(let i = 0; i<data.length; i++){
+        tempArr.push(data[i].cuisine_name);
+      }
+      return tempArr.join(', ');  
     },
     (err) =>{
-      // this.spinnerService.hide();
+       this.spinnerService.hide();
+    },
+    ()=>{
+
     });
   }
 
