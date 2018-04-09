@@ -1,0 +1,10 @@
+.more-container {
+  line-height: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+.show {
+  overflow: visible;
+  height: auto;
+}
+a.show-more-link{color: blue; cursor: pointer;}

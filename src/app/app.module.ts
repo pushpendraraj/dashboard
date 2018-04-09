@@ -43,13 +43,13 @@ import { RestaurantFilterPipe } from './restaurant-filter.pipe';
     HttpModule,
     FormsModule,
     Ng4LoadingSpinnerModule.forRoot(),
-    BootstrapModalModule.forRoot({container:document.body})
+    BootstrapModalModule.forRoot({container: document.body})
   ],
-  entryComponents:[LoginComponent, RegisterComponent],
+  entryComponents: [LoginComponent, RegisterComponent],
   providers: [DataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(APP_ID) private appId: string) {
@@ -57,5 +57,4 @@ export class AppModule {
       'in the browser' : 'on the server';
     console.log(`Running ${platform} with appId=${appId}`);
   }
-
 }

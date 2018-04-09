@@ -40,14 +40,17 @@
               <img [src]="restaurant.restaurant_logo?'assets/img/restaurant_logo.jpg':''" />
             </div>
             <div class="restaurant-short-details">
-              <h5><i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</h5>
-              <strong>                
-                {{restaurant.cusineNames}}
-              </strong>
-              <small>
+              <h5 style="margin-bottom:0px;"><i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</h5>
+              <div class="more-container" [ngClass]="show?'show':''">
+                <small>
+                  {{restaurant.cusineNames}}
+                </small>
+              </div>
+              <a class="show-more-link" [innerHTML]="show?'less &#9650;':'more &#9660;'" (click)="showToggle()"></a>
+              <strong>
                 <i class="fa fa-map-marker"></i>
                 {{restaurant.location}}
-              </small>
+              </strong>
             </div>
             <div class="clear"></div>
             <div class="restaurant-short-price">

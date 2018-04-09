@@ -30,6 +30,7 @@
     "ngx-loading": "^1.0.14",
     "rxjs": "^5.5.6",
     "ts-loader": "^4.1.0",
+    "view-more-less": "^1.0.2",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
