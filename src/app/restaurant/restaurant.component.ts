@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
-
 @Component({
   selector: 'app-restaurant',
   templateUrl: './restaurant.component.html',
@@ -17,7 +16,7 @@ export class RestaurantComponent implements OnInit {
   restaurantName = '';
   cuisineName = '';
   resCuisine = '';
-  show = false;
+  selectedIndex = -1;
   constructor(
     private dataService: DataService,
     private spinnerService: Ng4LoadingSpinnerService
@@ -64,15 +63,19 @@ export class RestaurantComponent implements OnInit {
         this.cuisines = data;
       },
       (err) => {
-        // console.log(err);
         this.spinnerService.hide();
       },
       () => {
         this.spinnerService.hide();
       });
   }
-  showToggle() {
-    this.show = !this.show;
+
+  showToggle(resid) {
+    if(this.selectedIndex ===-1){
+      this.selectedIndex = resid;
+    }else{
+      this.selectedIndex = -1;
+    }
   }
 
 }

@@ -41,12 +41,14 @@
             </div>
             <div class="restaurant-short-details">
               <h5 style="margin-bottom:0px;"><i class="fa fa-cutlery"></i> {{restaurant.restaurant_name}}</h5>
-              <div class="more-container" [ngClass]="show?'show':''">
-                <small>
-                  {{restaurant.cusineNames}}
-                </small>
-              </div>
-              <a class="show-more-link" [innerHTML]="show?'less &#9650;':'more &#9660;'" (click)="showToggle()"></a>
+              <ng-container *ngIf="restaurant.cusineNames">
+                <div class="more-container" [ngClass]="selectedIndex == restaurant.restaurant_id?'show':''">
+                  <small>
+                    {{restaurant.cusineNames}}
+                  </small>
+                </div>
+                <a class="show-more-link" [innerHTML]="selectedIndex == restaurant.restaurant_id?'less &#9650;':'more &#9660;'" (click)="showToggle(restaurant.restaurant_id)"></a>
+              </ng-container>
               <strong>
                 <i class="fa fa-map-marker"></i>
                 {{restaurant.location}}

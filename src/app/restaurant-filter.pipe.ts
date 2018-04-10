@@ -16,7 +16,9 @@ export class RestaurantFilterPipe implements PipeTransform {
       })
     }else if(searchQuery.cuisineId===undefined){
       return restaurants.filter(function(restaurant){
-        return restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase());
+        if(restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase()) || restaurant.cusineNames.toLowerCase().includes(searchQuery.searchTxt.toLowerCase())){
+          return true;
+        }
       })
     }else{
       return restaurants.filter(function(restaurant){
