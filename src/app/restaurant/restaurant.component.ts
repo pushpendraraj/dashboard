@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-restaurant',
@@ -21,8 +21,8 @@ export class RestaurantComponent implements OnInit {
   minOrder = 0;
   constructor(
     private dataService: DataService,
-    private spinnerService: Ng4LoadingSpinnerService
-  ) { }
+    private spinner: NgxSpinnerService
+  ) {  }
 
   ngOnInit() {
     this.getCuisines();
@@ -30,7 +30,7 @@ export class RestaurantComponent implements OnInit {
   }
 
   getRestaurants() {
-    this.spinnerService.show();
+    this.spinner.show();
     this.dataService.getRestaurants().subscribe(
       (data) => {
         const tempArr = [];
@@ -49,26 +49,25 @@ export class RestaurantComponent implements OnInit {
         this.restaurants = tempArr;
       },
       (err) => {
-        this.spinnerService.hide();
+        this.spinner.hide();
       },
       () => {
-       this.spinnerService.hide();
+        this.spinner.hide();
       }
     );
   }
 
   getCuisines() {
-    this.spinnerService.show();
     this.dataService.getCuisines()
     .subscribe(
       (data) => {
         this.cuisines = data;
       },
       (err) => {
-        this.spinnerService.hide();
+       
       },
       () => {
-        this.spinnerService.hide();
+        
       });
   }
 

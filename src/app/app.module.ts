@@ -8,13 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AboutComponent } from './about/about.component';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -42,7 +41,7 @@ import { RestaurantFilterPipe } from './restaurant-filter.pipe';
     Routing,
     HttpModule,
     FormsModule,
-    Ng4LoadingSpinnerModule.forRoot(),
+    NgxSpinnerModule,
     BootstrapModalModule.forRoot({container: document.body})
   ],
   entryComponents: [LoginComponent, RegisterComponent],
