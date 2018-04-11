@@ -5,33 +5,24 @@
     <form #values="ngForm" class="form-horizontal">
       <div class="form-group">
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="restaurantName" [(ngModel)]="restaurantName" placeholder="Search">
+          <input type="text" class="form-control" name="restaurantName" [(ngModel)]="restaurantName" placeholder="Search By Restaurant / Cuisine / Location">
         </div>
         <div class="col-sm-4">
           <select name="cuisineName" [(ngModel)]="cuisineName" class="chosen-select form-control">
-            <option value="">Select Cuisine</option>
+            <option selected value="">Select Cuisine</option>
             <option *ngFor="let cuisine of cuisines;" value="{{cuisine.cuisine_id}}">{{cuisine.cuisine_name}}</option>
           </select>
         </div>
         <div class="col-sm-4">
-          <select data-placeholder="Choose a Country" class="chosen-select form-control" tabindex="2">
-            <option selected value="">Select Cuisine</option>
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="Afghanistan">Afghanistan</option>
-            <option value="Albania">Albania</option>
-            <option value="Algeria">Algeria</option>
-            <option value="American Samoa">American Samoa</option>
-            <option value="Andorra">Andorra</option>
-            <option value="Angola">Angola</option>
-            <option value="Anguilla">Anguilla</option>
-            <option value="Antarctica">Antarctica</option>
+          <select name="minOrder" [(ngModel)]="minOrder"  class="chosen-select form-control">
+            <option selected value="0">Minimum Order</option>
+            <option *ngFor="let index of minOrderUpto" value="{{index*100}}">{{index*100}}</option>
           </select>
         </div>
       </div>
     </form>
   </div>
-  <div *ngFor="let restaurant of restaurants | restaurantFilter:{searchTxt:restaurantName,cuisineId:cuisineName};">
+  <div *ngFor="let restaurant of restaurants | restaurantFilter:{searchTxt:restaurantName,cuisineId:cuisineName,minOrderVal:minOrder};">
     <ng-container *ngIf="restaurant">
       <div class="col-md-12 pull-left restaurant-list-block padding-left-none wow bounceInRight animated">
         <div class="col-md-8 padding-left-none">
@@ -119,5 +110,5 @@
       </div>
     </ng-container>
   </div>
-  <div *ngIf="!(restaurants| restaurantFilter:{searchTxt:restaurantName,cuisineId:cuisineName}).length" class="alert alert-danger clear text-center">No Record matched!</div>
+  <div *ngIf="!(restaurants| restaurantFilter:{searchTxt:restaurantName,cuisineId:cuisineName,minOrderVal:minOrder}).length" class="alert alert-danger clear text-center">No Record matched!</div>
 </div>

@@ -22,9 +22,16 @@ export class RestaurantFilterPipe implements PipeTransform {
       })
     }else{
       return restaurants.filter(function(restaurant){
-        if(restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase())){
+        if(restaurant.cusineNames===undefined){
+          restaurant.cusineNames = ''; 
+        }
+        if(restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase()) || restaurant.cusineNames.toLowerCase().includes(searchQuery.searchTxt.toLowerCase()) || restaurant.location.toLowerCase().includes(searchQuery.searchTxt.toLowerCase())){
           if(restaurant.cuisine_id.indexOf(searchQuery.cuisineId)!=-1){
-            return restaurant;
+            if(restaurant.min_order >= searchQuery.minOrderVal){
+              return restaurant;
+            }else{
+              return false;
+            }
           }else{
             return false;
           }
@@ -33,9 +40,5 @@ export class RestaurantFilterPipe implements PipeTransform {
         }
       })
     }
-   
-    // return restaurants.filter(function(restaurant){
-    //   return restaurant.restaurant_name.toLowerCase().includes(restaurantName.toLowerCase());
-    // })
   }
 }

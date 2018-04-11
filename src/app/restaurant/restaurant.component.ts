@@ -17,6 +17,8 @@ export class RestaurantComponent implements OnInit {
   cuisineName = '';
   resCuisine = '';
   selectedIndex = -1;
+  minOrderUpto = [1,2,3,4,5];
+  minOrder = 0;
   constructor(
     private dataService: DataService,
     private spinnerService: Ng4LoadingSpinnerService
