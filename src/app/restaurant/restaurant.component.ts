@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LocalStorageService } from 'ngx-localstorage';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-restaurant',
@@ -17,12 +19,15 @@ export class RestaurantComponent implements OnInit {
   cuisineName = '';
   resCuisine = '';
   selectedIndex = -1;
-  minOrderUpto = [1,2,3,4,5];
+  minOrderUpto = [1, 2, 3, 4, 5];
   minOrder = 0;
   constructor(
     private dataService: DataService,
-    private spinner: NgxSpinnerService
-  ) {  }
+    private spinner: NgxSpinnerService,
+    private _storageService: LocalStorageService
+  ) {
+    this.restaurantName = this._storageService.get('searchValue', environment.storageKey);
+  }
 
   ngOnInit() {
     this.getCuisines();
@@ -64,17 +69,17 @@ export class RestaurantComponent implements OnInit {
         this.cuisines = data;
       },
       (err) => {
-       
+
       },
       () => {
-        
+
       });
   }
 
   showToggle(resid) {
-    if(this.selectedIndex ===-1){
+    if (this.selectedIndex === -1) {
       this.selectedIndex = resid;
-    }else{
+    } else {
       this.selectedIndex = -1;
     }
   }

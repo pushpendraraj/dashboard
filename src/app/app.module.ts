@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import {NgxLocalStorageModule} from 'ngx-localstorage';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -38,6 +39,7 @@ import { RestaurantFilterPipe } from './restaurant-filter.pipe';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
+    NgxLocalStorageModule.forRoot(),
     Routing,
     HttpModule,
     FormsModule,

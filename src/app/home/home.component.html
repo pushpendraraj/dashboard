@@ -1,14 +1,16 @@
 <div class="slogan">
     <h1>You Drool, We Deliver</h1>
     <p>Order food online from nearest restaurant.</p>
-    <form action="/restaurant" id="SearchPanel" class="form-inline" method="get" accept-charset="utf-8">			<div class="form-group home-search">
+    <form novalidate (ngSubmit)="search()" #searchForm="ngForm" id="searchForm" class="form-inline" accept-charset="utf-8">
+      <div class="form-group home-search">
 				<div class="input-group">
 					<div class="input-group-addon"><span class="gn-icon gn-icon-search"></span></div>
 					<div class="input-group-addon">Gwalior</div>
-					<div class="input text"><input name="search" class="form-control" placeholder="Search By Restaurant / Cuisine / Location" type="text" id="SearchSearch"/></div>	
+          <div class="input text"><input name="searchTxt" required #searchTxt="ngModel" [(ngModel)]="searchFrm.searchTxt" class="form-control" placeholder="Search By Restaurant / Cuisine / Location" type="text" id="searchTxt"/></div>
+          <!-- <div [hidden]="searchTxt.valid || searchTxt.pristine" class="alert alert-danger">  Search is required </div> -->
 				</div>
 			</div>
-			<button type="submit" id="SearchButton" class="btn btn-skin">GO</button>
+			<button type="submit" [disabled]="!searchForm.form.valid" id="SearchButton" class="btn btn-skin">GO</button>
 		</form>
   </div>
   <ul class="company-social company-social-home wow bounceInDown animated">

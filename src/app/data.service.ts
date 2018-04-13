@@ -11,6 +11,10 @@ export class DataService {
   APIURL = environment.apiUrl;
   constructor( private http: Http) { }
 
+  setLocals(key, value) {
+
+  }
+
   getRestaurants(): Observable<any> {
     return this.http.get(this.APIURL + 'list-restaurants/')
       .map((res: Response) => res.json())
