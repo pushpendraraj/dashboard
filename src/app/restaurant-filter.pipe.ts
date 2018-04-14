@@ -4,41 +4,47 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RestaurantFilterPipe implements PipeTransform {
   transform(restaurants: any, searchQuery: any): any {
-    if(searchQuery.searchTxt===undefined && searchQuery.cuisineId===undefined){
+    if (searchQuery.searchTxt === undefined && searchQuery.cuisineId === undefined) {
       return restaurants;
-    }else if(searchQuery.searchTxt===undefined){
-      let reastr = restaurants.filter(function(restaurant){
-        if(restaurant.cuisine_id.indexOf(searchQuery.cuisineId)!=-1){
+    } else if (searchQuery.searchTxt === undefined) {
+      const reastr = restaurants.filter(function(restaurant) {
+        if (restaurant.cuisine_id.indexOf(searchQuery.cuisineId) !== -1) {
           return false;
-        }else{
+        } else {
           return restaurant;
         }
-      })
-    }else if(searchQuery.cuisineId===undefined){
-      return restaurants.filter(function(restaurant){
-        if(restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase()) || restaurant.cusineNames.toLowerCase().includes(searchQuery.searchTxt.toLowerCase())){
+      });
+    } else if (searchQuery.cuisineId === undefined) {
+      return restaurants.filter(function(restaurant) {
+        const rNameTmp = restaurant.restaurant_name.toLowerCase();
+        const cNamesTmp = restaurant.cusineNames.toLowerCase();
+        if (rNameTmp.includes(searchQuery.searchTxt.toLowerCase()) || cNamesTmp.includes(searchQuery.searchTxt.toLowerCase())) {
           return true;
         }
-      })
-    }else{
-      return restaurants.filter(function(restaurant){
-        if(restaurant.cusineNames===undefined){
-          restaurant.cusineNames = ''; 
+      });
+    } else {
+      return restaurants.filter(function(restaurant) {
+        if (restaurant.cusineNames === undefined) {
+          restaurant.cusineNames = '';
         }
-        if(restaurant.restaurant_name.toLowerCase().includes(searchQuery.searchTxt.toLowerCase()) || restaurant.cusineNames.toLowerCase().includes(searchQuery.searchTxt.toLowerCase()) || restaurant.location.toLowerCase().includes(searchQuery.searchTxt.toLowerCase())){
-          if(restaurant.cuisine_id.indexOf(searchQuery.cuisineId)!=-1){
-            if(restaurant.min_order >= searchQuery.minOrderVal){
+        const rNameTmp = restaurant.restaurant_name.toLowerCase();
+        const cNamesTmp = restaurant.cusineNames.toLowerCase();
+        const lTmp = restaurant.location.toLowerCase();
+        const sText = searchQuery.searchTxt.toLowerCase();
+        if  (rNameTmp.includes(sText) || cNamesTmp.includes(sText) || lTmp.includes(sText)) {
+          if (restaurant.cuisine_id.indexOf(searchQuery.cuisineId) !== -1) {
+            if (restaurant.min_order >= searchQuery.minOrderVal) {
               return restaurant;
-            }else{
+            } else {
               return false;
             }
-          }else{
+          } else {
             return false;
           }
-        }else{
+        } else {
           return false;
         }
-      })
+      });
     }
   }
 }
