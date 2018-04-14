@@ -11,17 +11,15 @@
     <div class="modal-body">
       <div class="col-md-12">
         <section class="registration-panel">
-          <form action="/logins/register" id="RegistrationPanel" method="post" accept-charset="utf-8">
-            <div style="display:none;">
-              <input type="hidden" name="_method" value="POST" />
-            </div>
+          <form novalidate (ngSubmit)="register()" #registerForm = "ngForm" id="registerForm" accept-charset="utf-8">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">
                 <i class="fa fa-user"></i>
               </span>
-              <input name="data[User][username]" placeholder="Username" class="form-control" onkeyup="checkUserName(this.value)" type="text"
-                id="UserUsername" required="required" />
-              <span id="UserNameloader"></span>
+              <input [(ngModel)]="user.username" #username="ngModel" name="username" placeholder="Username" class="form-control input-addon" type="text"
+                id="username" required />
+              <span id="usernameloader"></span>
+              <div [hidden]="username.valid || username.pristine" class="alert-bad"> <i class="fa fa-warning"></i> username is required </div>
             </div>
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">
@@ -44,7 +42,7 @@
               <input name="data[User][contact_no]" placeholder="Contact No." class="form-control" type="text" id="UserContactNo" required="required"
               /> </div>
             <div class="submit">
-              <input class="btn btn-primary btn-block" type="submit" value="Register" />
+              <input class="btn btn-primary btn-block" [disabled]="!registerForm.form.valid" type="submit" value="Register" />
             </div>
           </form>
         </section>
@@ -57,7 +55,7 @@
       </div>
     </div>
     <div class="modal-footer clear">
-      <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+      <button type="button" class="btn btn-primary">OK</button>
       <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
     </div>
   </div>

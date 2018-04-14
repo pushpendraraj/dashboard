@@ -8,20 +8,25 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent extends DialogComponent<RegisterModal, boolean> {
-  constructor(dialogService : DialogService) {
+  user = {
+    username : '',
+  };
+
+  constructor(dialogService: DialogService) {
     super(dialogService);
    }
-  ngOnInit() {
-  }
 
   openModal(type) {
-    let self = this;
+    const self = this;
     self.close();
-    if(type == 'register') {
-      self.dialogService.addDialog(RegisterComponent, {  }, { closeByClickingOutside:true }); 
-    }else if(type='login'){
-      self.dialogService.addDialog(LoginComponent, {  }, { closeByClickingOutside:true }); 
+    if ( type === 'login') {
+      self.dialogService.addDialog(LoginComponent, {  }, { closeByClickingOutside: true });
     }
+  }
+  register() {
+    alert('submitted');
+    console.log(this.user.username);
+
   }
 }
 export interface RegisterModal {}

@@ -26,7 +26,11 @@ export class RestaurantComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private _storageService: LocalStorageService
   ) {
-    this.restaurantName = this._storageService.get('searchValue', environment.storageKey);
+    const searchQr = this._storageService.get('searchValue', environment.storageKey);
+    if (searchQr != null) {
+      this.restaurantName = searchQr;
+    }
+    this._storageService.remove('searchValue', environment.storageKey);
   }
 
   ngOnInit() {
