@@ -11,7 +11,7 @@
       <div class="modal-body">
         <div class="col-md-12">
           <section class="login-panel">
-            <div class="alert alert-success text-center"><strong>One Time Passcode has been to your register mobile</strong><hr><small>Please enter the OTP below to verify your mobile number. If you don't get OTP click on Resend OTP.</small></div>
+            <div *ngIf="otpDelivery" class="alert alert-success text-center"><strong>One Time Passcode has been to your register mobile</strong><hr><small>Please enter the OTP below to verify your mobile number. If you don't get OTP click on Resend OTP.</small></div>
             <form (ngSubmit)="verifyOtp()" #otpForm="ngForm" id="OtpPanel" accept-charset="utf-8">
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">
@@ -19,8 +19,10 @@
                 </span>
                 <input name="otp" placeholder="Enter your otp here" [(ngModel)]="user.otp" #otp="ngModel" id="otp" class="form-control" type="text" id="UserUsername" required="required"
                 />
-                <div [hidden]="otp.valid || otp.pristine" class="alert-bad">
-                  <i class="fa fa-warning"> Enter your otp.</i>
+                <div *ngIf="otp.invalid && (otp.dirty || otp.touched)" class="alert-bad">
+                  <div *ngIf="otp.errors.required">
+                      <i class="fa fa-warning"> </i> Enter your otp.
+                  </div>
                 </div>
               </div>
               <div class="submit">

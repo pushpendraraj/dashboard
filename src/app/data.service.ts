@@ -11,8 +11,10 @@ export class DataService {
   APIURL = environment.apiUrl;
   constructor( private http: Http) { }
 
-  setLocals(key, value) {
-
+  verifyOtp(): Observable<number> {
+    return this.http.get(this.APIURL + 'otp')
+    .map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw(error.json().error || 'server error'));
   }
 
   getRestaurants(): Observable<any> {
