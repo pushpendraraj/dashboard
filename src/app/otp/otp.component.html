@@ -1,0 +1,38 @@
+<div class="modal-dialog">
+    <div class="modal-content" id="OtpVerification">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="close()">&times;</button>
+        <h4>
+          <i class="fa fa-sign-in"></i> Otp Verification
+          <br>
+          <small>Verify your otp to complete your registration</small>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <section class="login-panel">
+            <div class="alert alert-success text-center"><strong>One Time Passcode has been to your register mobile</strong><hr><small>Please enter the OTP below to verify your mobile number. If you don't get OTP click on Resend OTP.</small></div>
+            <form (ngSubmit)="verifyOtp()" #otpForm="ngForm" id="OtpPanel" accept-charset="utf-8">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                  <i class="fa fa-phone"></i>
+                </span>
+                <input name="otp" placeholder="Enter your otp here" [(ngModel)]="user.otp" #otp="ngModel" id="otp" class="form-control" type="text" id="UserUsername" required="required"
+                />
+                <div [hidden]="otp.valid || otp.pristine" class="alert-bad">
+                  <i class="fa fa-warning"> Enter your otp.</i>
+                </div>
+              </div>
+              <div class="submit">
+                <input [disabled]="otpForm.form.invalid" class="btn btn-primary btn-block" type="submit" value="Verify Now" />
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+      <div class="modal-footer clear">
+        <button type="button" class="btn btn-primary">Resend OTP</button>
+        <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>

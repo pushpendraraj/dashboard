@@ -928,7 +928,7 @@
 	#Login .not-a-member, #Register .is-a-member, #Forgot .is-a-member{color: #000;
 	padding: 3% 0;
 	text-align: center;}
-	#Login h4, #Register h4, #Forgot h4, #Success h4{text-align: center;margin-bottom: 3%;color: #000;}
+	#Login h4, #Register h4, #Forgot h4, #Success h4, #OtpVerification h4{text-align: center;margin-bottom: 3%;color: #000;}
 	label.error{
 	bottom: -21px;
 	color: red;
@@ -938,7 +938,7 @@
 	left: 0;
 	position: absolute;
 	}
-	#Login h4 small, #Register h4 small, #Forgot h4 small, #Success h4 small{
+	#Login h4 small, #Register h4 small, #Forgot h4 small, #Success h4 small, #OtpVerification h4 small{
 	font-size: 12px;
 	}
 	form#LoginPanel input.form-control, form#RegistrationPanel input.form-control{
