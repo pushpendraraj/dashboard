@@ -7,9 +7,14 @@ import { RegisterComponent } from '../register/register.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent extends DialogComponent<LoginModal, boolean> {
+export class LoginComponent extends DialogComponent<LoginModal, boolean> implements OnInit {
   constructor(dialogService: DialogService) {
     super(dialogService);
+   }
+
+
+   ngOnInit() {
+
    }
 
   openModal(type) {
