@@ -17,7 +17,7 @@
                 <i class="fa fa-user"></i>
               </span>
               <input [(ngModel)]="user.fullName" minlength="3" #fullName="ngModel" name="fullName" placeholder="Full Name" class="form-control input-addon" type="text"
-                id="fullName" pattern="[a-zA-Z]+" required />
+                id="fullName" pattern="[a-zA-Z ]+" required />
               <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="alert-bad">
                 <div *ngIf="fullName.errors.required">
                     <i class="fa fa-warning"></i> Full name is required.

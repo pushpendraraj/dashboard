@@ -11,7 +11,7 @@
       <div class="modal-body">
         <div class="col-md-12">
           <section class="login-panel">
-            <div *ngIf="otpDelivery" class="alert alert-success text-center"><strong>One Time Passcode has been to your register mobile</strong><hr><small>Please enter the OTP below to verify your mobile number. If you don't get OTP click on Resend OTP.</small></div>
+            <div *ngIf="otpDelivery" [ngClass]="cls" [innerHTML]="otpDeliveryMsg"></div>
             <form (ngSubmit)="verifyOtp()" #otpForm="ngForm" id="OtpPanel" accept-charset="utf-8">
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">
