@@ -25,10 +25,15 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   }
 
   ngOnInit() {
-    const startDigit = this.data.otp.toString().slice(0, 2);
-    const lastDigit = this.data.otp.toString().slice(-2);
+    this.checkOtp();
+  }
 
-    if (isNumber(this.data.otp)) {
+  checkOtp() {
+    console.log(this.data);
+    const startDigit = this.data.userInfo.contactNo.toString().slice(0, 2);
+    const lastDigit = this.data.userInfo.contactNo.toString().slice(-2);
+
+    if (this.data.otp !== '') {
       this.otpDelivery = true;
       this.cls = 'alert alert-success text-center';
       this.otpDeliveryMsg = `<strong>One Time Passcode has been to your register mobile i.e. ${startDigit}xxxxxx${lastDigit}.</strong><hr>
@@ -38,18 +43,43 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
 
   verifyOtp() {
     const userOtp = this.user.otp;
-    const orgOtp = this.data.userInfo.contactNo;
+    const orgOtp = this.data.otp;
     if (userOtp !== orgOtp) {
       this.otpDelivery = true;
       this.cls = 'alert alert-danger text-center';
       this.otpDeliveryMsg = `<strong>One Time Passcode that you have entered not matched</strong><hr>
       <small>Please enter the correct OTP below to verify your mobile number. If you don not get OTP click on Resend OTP.</small>`;
     } else {
+      this.dataService.registerUser(this.data.userInfo).subscribe(
+        (data) => {
 
+        },
+        (err) => {
+
+        },
+        () => {
+
+        }
+      );
     }
-    // console.log(userOtp);
-    console.log(orgOtp);
+
   }
+
+  resendOtp() {
+    this.dataService.sendOtp().subscribe(
+      (data) => {
+        this.data.otp = '45858';
+        this.checkOtp();
+      },
+      (err) => {
+
+      },
+      () => {
+
+      }
+    );
+  }
+
 }
 
 export interface OtpModal {}

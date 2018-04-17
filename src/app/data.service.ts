@@ -11,7 +11,7 @@ export class DataService {
   APIURL = environment.apiUrl;
   constructor( private http: Http) { }
 
-  verifyOtp(): Observable<number> {
+  sendOtp(): Observable<number> {
     return this.http.get(this.APIURL + 'otp')
     .map((res: Response) => res.json())
     .catch((error: any) => Observable.throw(error.json().error || 'server error'));
@@ -39,6 +39,12 @@ export class DataService {
     return this.http.get(this.APIURL + 'get-cuisines-by-id/' + Ids)
     .map((res: Response) => res.json())
     .catch((error: any) => Observable.throw(error.json().error || 'server error'));
+  }
 
+  registerUser(userData): Observable<any> {
+    const data = userData;
+    return this.http.post(`${this.APIURL}register-user/`, data)
+    .map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw(error.json.error || 'server error'));
   }
 }

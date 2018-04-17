@@ -46,7 +46,7 @@ export class RegisterComponent extends DialogComponent<RegisterModal, boolean> i
   register() {
     this.spinner.show();
     const userData = this.user;
-    this.dataService.verifyOtp().subscribe(
+    this.dataService.sendOtp().subscribe(
       (data) => {
         this.openModal('otp', {otp: data, userInfo: userData});
         this.spinner.hide();
