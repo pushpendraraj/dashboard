@@ -39,7 +39,7 @@ export class RegisterComponent extends DialogComponent<RegisterModal, boolean> i
     if ( type === 'login') {
       self.dialogService.addDialog(LoginComponent, {  }, { closeByClickingOutside: true });
     } else if (type === 'otp') {
-      self.dialogService.addDialog(OtpComponent, { data }, { closeByClickingOutside: true } );
+      self.dialogService.addDialog(OtpComponent, { data }, { closeByClickingOutside: false } );
     }
   }
 
@@ -48,21 +48,16 @@ export class RegisterComponent extends DialogComponent<RegisterModal, boolean> i
     const userData = this.user;
     this.dataService.verifyOtp().subscribe(
       (data) => {
-        this.openModal('otp', {otp: data, mobile: this.user.contactNo});
-        console.log(data);
+        this.openModal('otp', {otp: data, userInfo: userData});
         this.spinner.hide();
       },
       (err) => {
-        console.log('error');
+        this.spinner.hide();
       },
       () => {
-
+        this.spinner.hide();
       }
     );
-    // this._storageService.set('tempUser', userData, environment.storageKey);
-    // alert('submitted');
-
-    console.log(this.user);
   }
 }
 export interface RegisterModal {}
