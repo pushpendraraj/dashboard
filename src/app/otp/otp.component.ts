@@ -20,6 +20,7 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   otpDelivery = false;
   otpDeliveryMsg = '';
   cls = '';
+  orgOtp: number;
   constructor(dialogService: DialogService, public dataService: DataService) {
     super(dialogService);
   }
@@ -44,6 +45,7 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   verifyOtp() {
     const userOtp = this.user.otp;
     const orgOtp = this.data.otp;
+
     if (userOtp !== orgOtp) {
       this.otpDelivery = true;
       this.cls = 'alert alert-danger text-center';
@@ -68,7 +70,7 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   resendOtp() {
     this.dataService.sendOtp().subscribe(
       (data) => {
-        this.data.otp = '45858';
+        this.orgOtp = data;
         this.checkOtp();
       },
       (err) => {

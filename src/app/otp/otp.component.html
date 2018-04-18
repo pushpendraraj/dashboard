@@ -17,7 +17,7 @@
                 <span class="input-group-addon" id="basic-addon1">
                   <i class="fa fa-phone"></i>
                 </span>
-                <input name="otp" placeholder="Enter your otp here" [(ngModel)]="user.otp" #otp="ngModel" id="otp" class="form-control" type="text" id="UserUsername" required="required"
+                <input name="otp" placeholder="Enter your otp here" [(ngModel)]="user.otp" #otp="ngModel" id="otp" class="form-control" type="number" id="UserUsername" required="required"
                 />
                 <div *ngIf="otp.invalid && (otp.dirty || otp.touched)" class="alert-bad">
                   <div *ngIf="otp.errors.required">

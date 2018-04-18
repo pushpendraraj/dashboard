@@ -42,6 +42,7 @@ export class DataService {
   }
 
   registerUser(userData): Observable<any> {
+    console.log(userData)
     const data = userData;
     return this.http.post(`${this.APIURL}register-user/`, data)
     .map((res: Response) => res.json())
