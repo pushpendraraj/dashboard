@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { environment } from '../environments/environment';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -42,9 +42,10 @@ export class DataService {
   }
 
   registerUser(userData): Observable<any> {
-    console.log(userData)
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Allow-Control-Allow-Origin': '*' });
+    const options = new RequestOptions({ headers: headers });
     const data = userData;
-    return this.http.post(`${this.APIURL}register-user/`, data)
+    return this.http.post(`${this.APIURL}register-user/`, {data: data}, options)
     .map((res: Response) => res.json())
     .catch((error: any) => Observable.throw(error.json.error || 'server error'));
   }
