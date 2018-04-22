@@ -42,10 +42,7 @@ export class DataService {
   }
 
   registerUser(userData): Observable<any> {
-    const headers = new Headers({ 'Content-Type': 'application/json', 'Allow-Control-Allow-Origin': '*' });
-    const options = new RequestOptions({ headers: headers });
-    const data = userData;
-    return this.http.post(`${this.APIURL}register-user/`, {data: data}, options)
+    return this.http.post(`${this.APIURL}register-user/`, userData)
     .map((res: Response) => res.json())
     .catch((error: any) => Observable.throw(error.json.error || 'server error'));
   }

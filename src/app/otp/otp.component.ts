@@ -30,7 +30,7 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   }
 
   checkOtp() {
-    console.log(this.data);
+    // console.log(this.data);
     const startDigit = this.data.userInfo.contactNo.toString().slice(0, 2);
     const lastDigit = this.data.userInfo.contactNo.toString().slice(-2);
 
@@ -52,9 +52,12 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
       this.otpDeliveryMsg = `<strong>One Time Passcode that you have entered not matched</strong><hr>
       <small>Please enter the correct OTP below to verify your mobile number. If you don not get OTP click on Resend OTP.</small>`;
     } else {
+      // console.log(this.data.userInfo)
       this.dataService.registerUser(this.data.userInfo).subscribe(
         (data) => {
+          if (data.result.insertId > 0) {
 
+          }
         },
         (err) => {
 
