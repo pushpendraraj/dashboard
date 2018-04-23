@@ -46,4 +46,10 @@ export class DataService {
     .map((res: Response) => res.json())
     .catch((error: any) => Observable.throw(error.json.error || 'server error'));
   }
+
+  loginUser(userData): Observable<any> {
+    return this.http.post(`${this.APIURL}login-user/`, userData)
+    .map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw(error.json.error || 'server error'));
+  }
 }

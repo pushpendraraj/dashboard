@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService, DialogComponent } from 'ng2-bootstrap-modal';
 import { FormGroup, FormControl, Validator } from '@angular/forms';
 import { DataService } from '../data.service';
-import { isNumber } from 'util';
+import { LocalStorageService } from 'ngx-localstorage';
+import { environment } from '../../environments/environment';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-otp',
@@ -21,7 +23,12 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   otpDeliveryMsg = '';
   cls = '';
   orgOtp: number;
-  constructor(dialogService: DialogService, public dataService: DataService) {
+  constructor(
+    dialogService: DialogService,
+    public dataService: DataService,
+    private _storageService: LocalStorageService,
+    public router: Router
+  ) {
     super(dialogService);
   }
 
@@ -30,7 +37,6 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   }
 
   checkOtp() {
-    // console.log(this.data);
     const startDigit = this.data.userInfo.contactNo.toString().slice(0, 2);
     const lastDigit = this.data.userInfo.contactNo.toString().slice(-2);
 
@@ -52,11 +58,27 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
       this.otpDeliveryMsg = `<strong>One Time Passcode that you have entered not matched</strong><hr>
       <small>Please enter the correct OTP below to verify your mobile number. If you don not get OTP click on Resend OTP.</small>`;
     } else {
-      // console.log(this.data.userInfo)
       this.dataService.registerUser(this.data.userInfo).subscribe(
         (data) => {
           if (data.result.insertId > 0) {
+            this.dataService.loginUser(this.data.userInfo).subscribe(
+              (loginData) => {
+                  if (loginData.login) {
+                    this._storageService.set('loggedUser', loginData.result.toString(), environment.storageKey);
+                    this._storageService.set('isLoggedIn', 'true', environment.storageKey);
+                    this.close();
+                    this.router.navigate(['/']);
+                  } else {
 
+                  }
+              },
+              (err) => {
+
+              },
+              () => {
+
+              }
+            );
           }
         },
         (err) => {
