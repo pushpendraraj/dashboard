@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LocalStorageService } from 'ngx-localstorage';
 import { environment } from '../environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -44,10 +45,8 @@ export class AppComponent {
 
     if ((this._storageService.get('isLoggedIn', environment.storageKey))) {
       this.loggedIn = true;
-      this.loggedUserInfo = this._storageService.get('loggedUser', environment.storageKey);
-      console.log(this.loggedUserInfo)
+      this.loggedUserInfo = JSON.parse(this._storageService.get('loggedUser', environment.storageKey));
     }
-
   }
 
   getTitle(state, parent) {

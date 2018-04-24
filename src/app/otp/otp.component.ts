@@ -64,7 +64,7 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
             this.dataService.loginUser(this.data.userInfo).subscribe(
               (loginData) => {
                   if (loginData.login) {
-                    this._storageService.set('loggedUser', loginData.result.toString(), environment.storageKey);
+                    this._storageService.set('loggedUser', JSON.stringify(loginData.result), environment.storageKey);
                     this._storageService.set('isLoggedIn', 'true', environment.storageKey);
                     this.close();
                     this.router.navigate(['/']);
