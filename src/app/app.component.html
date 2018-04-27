@@ -6,11 +6,11 @@
         <div class="gn-scroller">
           <ul class="gn-menu">
             <li *ngIf="loggedIn">
-              <a href="">
+              <a href="#profile">
                 <span class="fa">
                   <img width="32" height="32" class="img-circle" src="assets/img/avatar-icon.png">
                 </span>
-                {{loggedUserInfo.customer_name}}
+                {{loggedUserInfo.customer_name | titlecase}}
               </a>
             </li>
             <li>

@@ -23,6 +23,8 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 import { RestaurantFilterPipe } from './restaurant-filter.pipe';
 import { OtpComponent } from './otp/otp.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { OtpComponent } from './otp/otp.component';
     BlogDetailsComponent,
     BlogCommentsComponent,
     RestaurantFilterPipe,
-    OtpComponent
+    OtpComponent,
+    ProfileComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
@@ -48,7 +52,7 @@ import { OtpComponent } from './otp/otp.component';
     NgxSpinnerModule,
     BootstrapModalModule.forRoot({container: document.body})
   ],
-  entryComponents: [LoginComponent, RegisterComponent, OtpComponent],
+  entryComponents: [LoginComponent, RegisterComponent, OtpComponent, ForgotComponent],
   providers: [DataService],
   bootstrap: [AppComponent]
 })

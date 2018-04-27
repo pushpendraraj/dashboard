@@ -30,7 +30,7 @@
           <form #loginForm="ngForm" (submit)="login()" id="loginForm">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">
-                <i class="fa fa-user"></i>
+                <i class="fa fa-envelope"></i>
               </span>
               <input name="email" #email="ngModel" [(ngModel)]="user.email" placeholder="Register email address" class="form-control" type="email" id="email" required email /> 
               <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert-bad">
@@ -59,7 +59,7 @@
             <div class="remember">
               <input type="checkbox" name="data[User][remember]" value="1" id="UserRemember" />
               <span id="basic-addon1">Remember me</span>
-              <a id="forgot" href="#Forgot">Forgot Password</a>
+              <a id="forgot" (click)='openModal("forgot")'>Forgot Password</a>
             </div>
             <div class="submit">
               <input [disabled]="!loginForm.form.valid" class="btn btn-primary btn-block" type="submit" value="Login" />

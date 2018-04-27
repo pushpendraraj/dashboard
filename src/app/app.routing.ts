@@ -4,6 +4,7 @@ import { RestaurantComponent } from '../app/restaurant/restaurant.component';
 import { PageNotFoundComponent } from '../app/page-not-found/page-not-found.component';
 import { AboutComponent } from '../app/about/about.component';
 import { BlogComponent } from '../app/blog/blog.component';
+import { ProfileComponent } from '../app/profile/profile.component';
 
 const appRoutes: Routes = [
     {
@@ -25,6 +26,11 @@ const appRoutes: Routes = [
         path:'blogs',
         component:BlogComponent,
         data:{title:'Blogs'}
+    },
+    {
+        path:'profile',
+        component:ProfileComponent,
+        data:{title:'Profile'}
     },
     {
         path:'**',

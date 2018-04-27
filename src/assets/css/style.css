@@ -1077,7 +1077,7 @@
 	  margin-right: 5%;
 	  width: auto;
 	}
-	#signUp, #signIn{cursor: pointer;}
+	#signUp, #signIn, #forgot{cursor: pointer;}
 	.page-title{
 		margin-bottom: 1%;
 	   color: #EB5D1E;

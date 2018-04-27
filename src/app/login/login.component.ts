@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { RegisterComponent } from '../register/register.component';
+import { ForgotComponent } from '../forgot/forgot.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DataService } from '../data.service';
 import { LocalStorageService } from 'ngx-localstorage';
@@ -39,6 +40,8 @@ export class LoginComponent extends DialogComponent<LoginModal, boolean> impleme
     self.close();
     if (type === 'register') {
       self.dialogService.addDialog(RegisterComponent, {  }, { closeByClickingOutside: true });
+    } else if ( type === 'forgot'){
+      self.dialogService.addDialog(ForgotComponent, {  }, { closeByClickingOutside: true });
     }
   }
 
