@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8081/api/',
-  storageKey: 'foodstar'
+  storageKey: 'foodstar',
+  serverError: '<strong>Sorry</strong> ! Something went wrong, please try again after some time.',
 };

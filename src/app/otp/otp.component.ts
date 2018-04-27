@@ -5,6 +5,7 @@ import { DataService } from '../data.service';
 import { LocalStorageService } from 'ngx-localstorage';
 import { environment } from '../../environments/environment';
 import { RouterLink, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-otp',
@@ -22,12 +23,14 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   otpDelivery = false;
   otpDeliveryMsg = '';
   cls = '';
+  error = '';
   orgOtp: number;
   constructor(
     dialogService: DialogService,
     public dataService: DataService,
     private _storageService: LocalStorageService,
-    public router: Router
+    public router: Router,
+    private spinner: NgxSpinnerService
   ) {
     super(dialogService);
   }
@@ -49,6 +52,7 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
   }
 
   verifyOtp() {
+    this.spinner.show();
     const userOtp = this.user.otp;
     const orgOtp = this.data.otp;
 
@@ -57,6 +61,7 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
       this.cls = 'alert alert-danger text-center';
       this.otpDeliveryMsg = `<strong>One Time Passcode that you have entered not matched</strong><hr>
       <small>Please enter the correct OTP below to verify your mobile number. If you don not get OTP click on Resend OTP.</small>`;
+      this.spinner.hide();
     } else {
       this.dataService.registerUser(this.data.userInfo).subscribe(
         (data) => {
@@ -67,46 +72,49 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
                     this._storageService.set('loggedUser', JSON.stringify(loginData.result), environment.storageKey);
                     this._storageService.set('isLoggedIn', 'true', environment.storageKey);
                     this.close();
-                    this.router.navigate(['/']);
+                    window.location.reload(true);
                   } else {
-
+                    this.error = loginData.message;
+                    this.spinner.hide();
                   }
               },
               (err) => {
-
+                this.error = environment.serverError;
+                this.spinner.hide();
               },
               () => {
-
+                this.spinner.hide();
               }
             );
           }
         },
         (err) => {
-
+          this.error = environment.serverError;
+          this.spinner.hide();
         },
         () => {
-
+          this.spinner.hide();
         }
       );
     }
-
   }
 
   resendOtp() {
+    this.spinner.show();
     this.dataService.sendOtp().subscribe(
       (data) => {
         this.orgOtp = data;
         this.checkOtp();
       },
       (err) => {
-
+        this.error = environment.serverError;
+        this.spinner.hide();
       },
       () => {
-
+        this.spinner.hide();
       }
     );
   }
-
 }
 
 export interface OtpModal {}

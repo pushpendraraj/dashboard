@@ -14,14 +14,14 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class LoginComponent extends DialogComponent<LoginModal, boolean> implements OnInit {
   user = {
-    email:'',
-    password:''
-  }
+    email: '',
+    password: ''
+  };
   error = '';
 
   constructor(
-    dialogService: DialogService, 
-    private spinner: NgxSpinnerService, 
+    dialogService: DialogService,
+    private spinner: NgxSpinnerService,
     private dataService: DataService,
     private _storageService: LocalStorageService,
     public router: Router
@@ -51,14 +51,14 @@ export class LoginComponent extends DialogComponent<LoginModal, boolean> impleme
           this._storageService.set('loggedUser', JSON.stringify(loginData.result), environment.storageKey);
           this._storageService.set('isLoggedIn', 'true', environment.storageKey);
           this.close();
-          this.router.navigate(['/']);
-        }else{
-          this.error = '<strong>Sorry</strong> ! Email address OR password incorrect. ';
+          window.location.reload(true);
+        } else {
+          this.error = loginData.message;
           this.spinner.hide();
         }
       },
-      (err)=>{
-        this.error = '<strong>Sorry</strong> ! Something went wrong, please try again after some time. ';
+      (err) => {
+        this.error = environment.serverError;
         this.spinner.hide();
       },
       () => {
