@@ -52,4 +52,10 @@ export class DataService {
     .map((res: Response) => res.json())
     .catch((error: any) => Observable.throw(error.json.error || 'server error'));
   }
+
+  forgotPassword(userData): Observable<any> {
+    return this.http.post(`${this.APIURL}forgot-password/`, userData)
+    .map((res: Response) => res.json())
+    .catch((error: any) => Observable.throw(error.json.error || 'server error'));
+  }
 }
