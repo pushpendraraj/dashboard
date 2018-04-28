@@ -41,7 +41,7 @@ import { ForgotComponent } from './forgot/forgot.component';
     RestaurantFilterPipe,
     OtpComponent,
     ProfileComponent,
-    ForgotComponent
+    ForgotComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),

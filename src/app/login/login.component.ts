@@ -30,17 +30,16 @@ export class LoginComponent extends DialogComponent<LoginModal, boolean> impleme
     super(dialogService);
    }
 
+  ngOnInit() {
 
-   ngOnInit() {
-
-   }
+  }
 
   openModal(type) {
     const self = this;
     self.close();
     if (type === 'register') {
       self.dialogService.addDialog(RegisterComponent, {  }, { closeByClickingOutside: true });
-    } else if ( type === 'forgot'){
+    } else if ( type === 'forgot') {
       self.dialogService.addDialog(ForgotComponent, {  }, { closeByClickingOutside: true });
     }
   }

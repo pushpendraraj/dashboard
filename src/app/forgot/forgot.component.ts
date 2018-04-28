@@ -1,6 +1,8 @@
 import { Component, OnInit  } from '@angular/core';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { DataService } from '../data.service';
+import { LoginComponent } from '../login/login.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-forgot',
   templateUrl: './forgot.component.html',
@@ -13,7 +15,7 @@ export class ForgotComponent extends DialogComponent<ForgotModal, boolean> imple
   isError = false;
   isSuccess = false;
   message = '';
-  constructor(dialogService: DialogService, public dataServie: DataService) {
+  constructor(dialogService: DialogService, public dataServie: DataService, private spinner: NgxSpinnerService) {
     super(dialogService);
   }
   ngOnInit() {
@@ -24,17 +26,20 @@ export class ForgotComponent extends DialogComponent<ForgotModal, boolean> imple
       email : this.user.email
     };
 
+    this.spinner.show();
     this.dataServie.forgotPassword(userData).subscribe(
       (data) => {
         if (data.isSuccess) {
-
+          this.isSuccess = true;
+          this.message = `<strong>Thank you ! </strong> ${data.msg}`;
         } else {
           this.isError = true;
-          this.message = '<strong>Sorry ! </strong> please enter a valid email';
+          this.message = `<strong>Sorry ! </strong> ${data.msg}`;
         }
+        this.spinner.hide();
       },
       (err) => {
-
+        this.spinner.hide();
       }
     );
   }
