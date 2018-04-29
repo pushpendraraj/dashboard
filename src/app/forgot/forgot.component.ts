@@ -45,6 +45,8 @@ export class ForgotComponent extends DialogComponent<ForgotModal, boolean> imple
   }
 
   openModal(type) {
+    const self = this;
+    self.close();
     if (type === 'login') {
       this.dialogService.addDialog(LoginComponent, {  }, { closeByClickingOutside: true });
     }

@@ -65,14 +65,14 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
     } else {
       this.dataService.registerUser(this.data.userInfo).subscribe(
         (data) => {
-          if (data.result.insertId > 0) {
+          if (data.register) {
             this.dataService.loginUser(this.data.userInfo).subscribe(
               (loginData) => {
                   if (loginData.login) {
                     this._storageService.set('loggedUser', JSON.stringify(loginData.result), environment.storageKey);
                     this._storageService.set('isLoggedIn', 'true', environment.storageKey);
                     this.close();
-                    window.location.reload(true);
+                    // window.location.reload(true);
                   } else {
                     this.error = loginData.message;
                     this.spinner.hide();
@@ -86,6 +86,11 @@ export class OtpComponent extends DialogComponent<OtpModal, boolean> implements 
                 this.spinner.hide();
               }
             );
+          } else {
+            this.otpDelivery = true;
+            this.cls = 'alert alert-danger text-center';
+            this.otpDeliveryMsg = data.message;
+            this.spinner.hide();
           }
         },
         (err) => {

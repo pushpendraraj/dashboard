@@ -25,6 +25,7 @@ import { RestaurantFilterPipe } from './restaurant-filter.pipe';
 import { OtpComponent } from './otp/otp.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { LoginWithOptComponent } from './login-with-opt/login-with-opt.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ForgotComponent } from './forgot/forgot.component';
     OtpComponent,
     ProfileComponent,
     ForgotComponent,
+    LoginWithOptComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
