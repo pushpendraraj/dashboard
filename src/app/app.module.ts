@@ -26,6 +26,13 @@ import { OtpComponent } from './otp/otp.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { LoginWithOptComponent } from './login-with-opt/login-with-opt.component';
+import { AddressComponent } from './profile/address/address.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { OrderComponent } from './profile/order/order.component';
+import { ReviewRatingComponent } from './profile/review-rating/review-rating.component';
+import { PhotosComponent } from './profile/photos/photos.component';
+import { VideosComponent } from './profile/videos/videos.component';
+import { WalletComponent } from './profile/wallet/wallet.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +51,13 @@ import { LoginWithOptComponent } from './login-with-opt/login-with-opt.component
     ProfileComponent,
     ForgotComponent,
     LoginWithOptComponent,
+    AddressComponent,
+    EditProfileComponent,
+    OrderComponent,
+    ReviewRatingComponent,
+    PhotosComponent,
+    VideosComponent,
+    WalletComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
