@@ -966,9 +966,9 @@
 	.write-review .restaurant-write-review .input{
 	margin:3% 0;
 	}
-	#AddressBookAddressesForm .input-group, #AddressBookCheckoutForm .input-group,
-	#UserEditProfileForm .input-group{
-	margin: 2.5% 0;
+	#AddressBookForm .input-group, #AddressCheckoutForm .input-group,
+	#EditProfileForm .input-group{
+	margin: 2% 0;
 	}
 	.error-message{
 	color:red;
